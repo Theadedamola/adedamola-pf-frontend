@@ -12,12 +12,12 @@ export default function SEO({
   title = 'Adedamola - Portfolio', 
   description = 'Portfolio of Adedamola, a Product Designer and Frontend Developer building digital experiences.', 
   image = '/thumbnail.png',
-  url = 'https://adedamola.design/',
+  url = 'https://adedamola-dev.netlify.app/',
   type = 'website'
 }: SEOProps) {
   // Ensure image is absolute URL if it's not
-  const absoluteImage = image.startsWith('http') ? image : `https://adedamola.design${image}`;
-  const absoluteUrl = url.startsWith('http') ? url : `https://adedamola.design${url}`;
+  const absoluteImage = image.startsWith('http') ? image : `https://adedamola-dev.netlify.app${image}`;
+  const absoluteUrl = url.startsWith('http') ? url : `https://adedamola-dev.netlify.app${url}`;
 
   return (
     <Helmet>

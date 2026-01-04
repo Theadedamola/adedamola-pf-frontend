@@ -34,7 +34,7 @@ export default function HeroSection() {
           <Link to="https://wa.me/2347067276819">
           <Button className='h-full'>Hit me up</Button>
           </Link>
-          <Link to="/">
+          <Link to="https://drive.google.com/file/d/1LM2XE0GTNVoaqvj8eFllRwUWOfUj9Yk4/view?usp=sharing">
           <Button variant="secondary" className="flex items-center justify-center gap-2"><span className="font-thaloria text-2xl"><strong>Résumé</strong></span></Button>
           </Link>
         </motion.div>
