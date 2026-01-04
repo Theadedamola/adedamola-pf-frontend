@@ -46,7 +46,7 @@ export default function TestimonialCard({ name, role, quote, company, className 
             
             <div className="space-y-1">
               <p className="text-white/60 text-sm font-medium tracking-widest uppercase">Tap to reveal</p>
-              <h3 className="text-white text-xl md:text-2xl font-bold font-thaloria tracking-wide">
+              <h3 className="text-white text-xl md:text-2xl font-medium tracking-wide">
                 {role} {company && <span className="text-white/80">@ {company}</span>}
               </h3>
             </div>
@@ -68,7 +68,7 @@ export default function TestimonialCard({ name, role, quote, company, className 
           </div>
 
           <div className="relative h-full flex flex-col justify-center p-8 z-10 text-center">
-            <p className="text-gray-200 text-sm md:text-xl font-medium leading-relaxed">
+            <p className="text-gray-200 text-sm md:text-xl font-regular leading-5.5">
               {quote}
             </p>
             <div className="my-6">

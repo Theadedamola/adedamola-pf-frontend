@@ -2,6 +2,7 @@ import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Clock, Calendar, ArrowLeft } from 'lucide-react';
 import { useBlog } from '@/hooks/queries/useBlogQueries';
+import SEO from '@/components/common/SEO';
 
 export default function BlogDetails() {
   const { slug } = useParams<{ slug: string }>();
@@ -48,8 +49,17 @@ export default function BlogDetails() {
   // Sort blocks by order just in case
   const sortedBlocks = [...contentBlocks].sort((a, b) => a.order - b.order);
 
+  const blogDescription = data.data.excerpt || `Read ${title}, a blog post by Adedamola.`;
+
   return (
     <div className="min-h-screen transition-colors duration-500 text-gray-900">
+      <SEO 
+        title={`${title} - Adedamola`}
+        description={blogDescription}
+        image={coverImage}
+        url={`/blogs/${slug}`}
+        type="article"
+      />
       
       <main className="pt-32 pb-20 px-4 md:px-8 max-w-4xl mx-auto">
         <Link 

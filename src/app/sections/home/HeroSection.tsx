@@ -1,5 +1,6 @@
 import { Button } from '@/components/common/Button';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 export default function HeroSection() {
   return (
@@ -18,7 +19,7 @@ export default function HeroSection() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.8 }}
-          className="text-sm md:text-base text-gray-400 "
+          className="text-sm md:text-base text-gray-400"
         >
           <span className="mr-2">Currently Building:</span>
           <a href="https://zmarket.ng" className="text-gray-500 hover:text-blue-600 hover:underline transition-colors">Zmarket</a>, <a href="https://vociara.com" className="text-gray-500 hover:text-blue-600 hover:underline transition-colors">Vociara</a>, <a href="https://nagidafoods.com" className="text-gray-500 hover:text-blue-600 hover:underline transition-colors">Nagida foods</a>
@@ -30,8 +31,12 @@ export default function HeroSection() {
           transition={{ delay: 0.4, duration: 0.8 }}
           className="text-sm flex gap-4 mt-8 md:text-base text-gray-500"
         >
-          <Button>Hit me up</Button>
+          <Link to="https://wa.me/2347067276819">
+          <Button className='h-full'>Hit me up</Button>
+          </Link>
+          <Link to="/">
           <Button variant="secondary" className="flex items-center justify-center gap-2"><span className="font-thaloria text-2xl"><strong>Résumé</strong></span></Button>
+          </Link>
         </motion.div>
       </motion.div>
     </section>

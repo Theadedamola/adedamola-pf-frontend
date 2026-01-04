@@ -12,7 +12,7 @@ export default function TestimonialSection() {
       name: "Samuel Adeyemi",
       role: "CEO",
       company: "NagidaFoods",
-      quote: "Adedamola is a rare breed of developer who understands both the technical and business aspects of product development. His attention to detail and ability to deliver high-quality code is unmatched."
+      quote: "Working with Adedamola transformed our digital presence. His ability to translate complex ideas into elegant, user-friendly solutions is remarkable. The new platform he built increased our customer engagement."
     },
     // Added a second one for balance, or I can just keep one centered.
     // Let's stick to the requested one primarily, but maybe layout allows for more.

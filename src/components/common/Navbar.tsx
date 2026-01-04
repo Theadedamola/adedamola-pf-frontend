@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Lock, Menu, X, Linkedin, Twitter, Briefcase, BookOpen } from 'lucide-react';
+import { Menu, X, Linkedin, Twitter, Github } from 'lucide-react';
 import classNames from 'classnames';
 import Logo from './Logo';
 
@@ -12,15 +12,14 @@ export default function Navbar() {
     { label: '/me', path: '/about' },
     { label: '/projects', path: '/projects' },
     { label: '/blogs', path: '/blogs' },
-    { label: '/résumé', path: '/resume', isLocked: true },
+    // { label: '/résumé', path: '/resume', isLocked: true },
     { label: '/contact', path: '/contact' },
   ];
 
   const socialLinks = [
-    { icon: <BookOpen size={18} />, href: '#', label: 'Blog' }, // Placeholder for the book icon
-    { icon: <Twitter size={18} />, href: '#', label: 'X' },
-    { icon: <Linkedin size={18} />, href: '#', label: 'LinkedIn' },
-    { icon: <Briefcase size={18} />, href: '#', label: 'Behance' },
+    { icon: <Github size={18} />, href: 'https://github.com/Theadedamola', label: 'GitHub' }, // Placeholder for the book icon
+    { icon: <Twitter size={18} />, href: 'https://twitter.com/Theadedamola_', label: 'X' },
+    { icon: <Linkedin size={18} />, href: 'https://www.linkedin.com/in/adedamola-alausa/', label: 'LinkedIn' },
   ];
 
   return (
@@ -55,7 +54,7 @@ export default function Navbar() {
               }
             >
               {item.label}
-              {item.isLocked && <Lock size={12} className="opacity-60" />}
+              {/* {item.isLocked && <Lock size={12} className="opacity-60" />} */}
             </NavLink>
           ))}
         </div>
@@ -93,7 +92,7 @@ export default function Navbar() {
               }
             >
               {item.label}
-              {item.isLocked && <Lock size={12} />}
+              {/* {item.isLocked && <Lock size={12} />} */}
             </NavLink>
           ))}
           <div className="flex gap-6 mt-4 pt-4 border-t border-gray-100">

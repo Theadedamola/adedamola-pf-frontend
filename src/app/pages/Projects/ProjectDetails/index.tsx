@@ -1,11 +1,13 @@
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Calendar } from 'lucide-react';
-import { useProject } from '@/hooks/queries/useProjectQueries';
+import { ArrowLeft, Calendar, ArrowRight } from 'lucide-react';
+import { useProject, useProjects } from '@/hooks/queries/useProjectQueries';
+import SEO from '@/components/common/SEO';
 
 export default function ProjectDetails() {
   const { slug } = useParams<{ slug: string }>();
   const { data, isLoading, error } = useProject(slug || '');
+  const { data: projectsData } = useProjects(1, 100);
 
   if (isLoading) {
     return (
@@ -44,8 +46,24 @@ export default function ProjectDetails() {
   // Sort blocks by order just in case
   const sortedBlocks = [...contentBlocks].sort((a, b) => a.order - b.order);
 
+  // Determine next project
+  const projects = projectsData?.projects || [];
+  const currentIndex = projects.findIndex(p => p.slug === slug);
+  const nextProject = currentIndex !== -1 && currentIndex < projects.length - 1 
+    ? projects[currentIndex + 1] 
+    : null;
+
+  const projectDescription = data.data.excerpt || `Check out ${title}, a project by Adedamola.`;
+
   return (
     <div className="min-h-screen transition-colors duration-500 text-gray-900">
+      <SEO 
+        title={`${title} - Adedamola`}
+        description={projectDescription}
+        image={coverImage}
+        url={`/projects/${slug}`}
+        type="article"
+      />
       
       <main className="pt-32 pb-20 px-4 md:px-8 max-w-4xl mx-auto">
         <Link 
@@ -118,6 +136,23 @@ export default function ProjectDetails() {
               );
             })}
           </div>
+
+          {/* Next Project Navigation */}
+          {nextProject && (
+            <div className="mt-24 pt-12 border-t border-gray-200 ">
+              <Link to={`/projects/${nextProject.slug}`} className="group block">
+                <div className="text-sm font-mono opacity-60 mb-4">Next Project</div>
+                <div className="flex justify-between items-center">
+                  <h3 className="text-3xl md:text-5xl group-hover:opacity-60 transition-opacity">
+                    {nextProject.title}
+                  </h3>
+                  <div className="p-4 rounded-full border border-gray-200 group-hover:bg-gray-100 transition-colors">
+                    <ArrowRight size={24} />
+                  </div>
+                </div>
+              </Link>
+            </div>
+          )}
         </motion.article>
       </main>
     </div>
