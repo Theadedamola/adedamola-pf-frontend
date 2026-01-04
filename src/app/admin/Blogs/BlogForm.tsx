@@ -23,6 +23,7 @@ export default function BlogForm({ initialData, onSubmit, isSubmitting, title }:
     contentBlocks: [],
     status: 'draft',
     tags: [],
+    readingTime: 0,
     ...initialData,
   });
 
@@ -98,6 +99,18 @@ export default function BlogForm({ initialData, onSubmit, isSubmitting, title }:
           rows={2}
           className="text-lg text-gray-600 italic resize-none border-none bg-transparent px-0 focus:ring-0"
         />
+
+        {/* Reading Time */}
+        <div className="space-y-2">
+          <label className="block text-sm font-medium text-gray-700">Reading Time (minutes)</label>
+          <input
+            type="number"
+            value={formData.readingTime || ''}
+            onChange={(e) => updateField('readingTime', parseInt(e.target.value) || 0)}
+            placeholder="e.g. 5"
+            className="w-full bg-white border border-gray-200 rounded-lg px-4 py-2 focus:ring-2 focus:ring-gray-900 focus:border-transparent outline-none"
+          />
+        </div>
 
         {/* Tags */}
         <div className="space-y-2">

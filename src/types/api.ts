@@ -73,6 +73,7 @@ export interface ProjectInput {
   contentBlocks?: ContentBlock[];
   status?: 'published' | 'draft';
   tags?: string[];
+  readingTime?: number;
 }
 
 // Response for GET /api/v1/projects (Public & Admin)
@@ -113,6 +114,7 @@ export interface BlogInput {
   contentBlocks?: ContentBlock[];
   status?: 'published' | 'draft';
   tags?: string[];
+  readingTime?: number;
 }
 
 // Response for GET /api/v1/blogs (Public & Admin)

@@ -39,7 +39,7 @@ export default function BlogDetails() {
     );
   }
 
-  const { title, createdAt, readingTime, tags, coverImage, contentBlocks } = data.data;
+  const { title, createdAt, readingTime, tags, coverImage, contentBlocks, excerpt } = data.data;
   const formattedDate = new Date(createdAt).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
@@ -112,6 +112,13 @@ export default function BlogDetails() {
                 alt={title}
                 className="w-full h-full object-cover"
               />
+            </div>
+          )}
+
+          {/* Excerpt */}
+          {excerpt && (
+            <div className="text-xl md:text-2xl font-medium leading-relaxed opacity-80 mb-12 italic">
+              {excerpt}
             </div>
           )}
 
