@@ -24,7 +24,7 @@ export default function AdminBlogs() {
     <div>
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-3xl font-bold font-thaloria mb-2">Blogs</h1>
+          <h1 className="text-3xl font-bold mb-2">Blogs</h1>
           <p className="text-gray-500">Manage your blog posts</p>
         </div>
         <Link to="/admin/blogs/create">

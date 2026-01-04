@@ -45,7 +45,7 @@ export default function ProjectForm({ initialData, onSubmit, isSubmitting, title
           >
             <ArrowLeft size={20} />
           </Link>
-          <h1 className="text-2xl font-bold font-thaloria">{title}</h1>
+          <h1 className="text-xl font-bold">{title}</h1>
         </div>
         <div className="flex items-center gap-3">
           <select
@@ -87,7 +87,7 @@ export default function ProjectForm({ initialData, onSubmit, isSubmitting, title
           value={formData.title}
           onChange={(e) => updateField('title', e.target.value)}
           placeholder="Title"
-          className="w-full text-4xl md:text-5xl font-bold font-thaloria placeholder-gray-300 border-none outline-none bg-transparent p-0 focus:ring-0"
+          className="w-full text-4xl md:text-5xl font-bold placeholder-gray-300 border-none outline-none bg-transparent p-0 focus:ring-0"
         />
 
         {/* Excerpt */}

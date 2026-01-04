@@ -24,7 +24,7 @@ export default function AdminProjects() {
     <div>
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-3xl font-bold font-thaloria mb-2">Projects</h1>
+          <h1 className="text-3xl font-bold mb-2">Projects</h1>
           <p className="text-gray-500">Manage your portfolio projects</p>
         </div>
         <Link to="/admin/projects/create">

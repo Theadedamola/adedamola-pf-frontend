@@ -47,7 +47,7 @@ export default function AdminLogin() {
         className="w-full max-w-md bg-white p-8 rounded-2xl shadow-xl"
       >
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold font-thaloria mb-2">Welcome Back</h1>
+          <h1 className="text-3xl font-bold mb-2">Welcome Back</h1>
           <p className="text-gray-500 text-sm">Sign in to manage your portfolio</p>
         </div>
 
@@ -65,10 +65,6 @@ export default function AdminLogin() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
-              // Remove required to let Zod handle validation feedback if desired, 
-              // or keep it for HTML5 validation. Let's keep HTML5 validation as a first layer 
-              // but relies on Zod for custom messages if needed.
-              // Actually, removing required allows demonstrating Zod validation.
             />
             {validationErrors.email && (
               <p className="mt-1 text-xs text-red-500">{validationErrors.email}</p>

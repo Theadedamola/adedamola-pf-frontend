@@ -79,7 +79,7 @@ export default function BlogDetails() {
               </span>
             </div>
             
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-thaloria mb-8 leading-tight">
+            <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold mb-8 leading-tight">
               {title}
             </h1>
 

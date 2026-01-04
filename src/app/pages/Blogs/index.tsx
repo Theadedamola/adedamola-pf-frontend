@@ -15,7 +15,7 @@ export default function Blogs() {
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-6xl font-bold mb-6 font-thaloria"
+            className="text-4xl md:text-6xl font-bold mb-6"
           >
             Thoughts & Perspectives
           </motion.h1>

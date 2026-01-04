@@ -40,12 +40,12 @@ export default function BlogForm({ initialData, onSubmit, isSubmitting, title }:
       <div className="flex items-center justify-between mb-8 sticky top-0 bg-gray-50/80 backdrop-blur-sm py-4 z-20">
         <div className="flex items-center gap-4">
           <Link 
-            to="/admin/blogs" 
+            to="/admin/blogs"
             className="p-2 hover:bg-gray-200 rounded-full transition-colors text-gray-500"
           >
             <ArrowLeft size={20} />
           </Link>
-          <h1 className="text-2xl font-bold font-thaloria">{title}</h1>
+          <h1 className="text-2xl font-bold">{title}</h1>
         </div>
         <div className="flex items-center gap-3">
           <select

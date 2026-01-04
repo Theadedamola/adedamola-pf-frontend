@@ -23,7 +23,7 @@ export default function Sidebar() {
   return (
     <aside className="w-64 bg-white border-r border-gray-100 flex flex-col h-full">
       <div className="p-8">
-        <h2 className="text-xl font-bold font-thaloria tracking-wide">Admin</h2>
+        <h2 className="text-xl font-bold tracking-wide">Admin</h2>
       </div>
 
       <nav className="flex-1 px-4">
