@@ -1,25 +1,38 @@
-import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import { Menu, X, Linkedin, Twitter, Github } from 'lucide-react';
-import classNames from 'classnames';
-import Logo from './Logo';
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
+import { Menu, X, Linkedin, Twitter, Github } from "lucide-react";
+import classNames from "classnames";
+import Logo from "./Logo";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
-    { label: '/home', path: '/' },
-    { label: '/me', path: '/about' },
-    { label: '/projects', path: '/projects' },
-    { label: '/blogs', path: '/blogs' },
+    { label: "/home", path: "/" },
+    { label: "/me", path: "/about" },
+    { label: "/projects", path: "/projects" },
+    { label: "/explorations", path: "/explorations" },
+    { label: "/blogs", path: "/blogs" },
     // { label: '/résumé', path: '/resume', isLocked: true },
-    { label: '/contact', path: '/contact' },
+    { label: "/contact", path: "/contact" },
   ];
 
   const socialLinks = [
-    { icon: <Github size={18} />, href: 'https://github.com/Theadedamola', label: 'GitHub' }, // Placeholder for the book icon
-    { icon: <Twitter size={18} />, href: 'https://twitter.com/Theadedamola_', label: 'X' },
-    { icon: <Linkedin size={18} />, href: 'https://www.linkedin.com/in/adedamola-alausa/', label: 'LinkedIn' },
+    {
+      icon: <Github size={18} />,
+      href: "https://github.com/Theadedamola",
+      label: "GitHub",
+    }, // Placeholder for the book icon
+    {
+      icon: <Twitter size={18} />,
+      href: "https://twitter.com/Theadedamola_",
+      label: "X",
+    },
+    {
+      icon: <Linkedin size={18} />,
+      href: "https://www.linkedin.com/in/adedamola-alausa/",
+      label: "LinkedIn",
+    },
   ];
 
   return (
@@ -27,16 +40,19 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <div className="flex items-center gap-4">
           {/* Mobile Menu Button */}
-          <button 
+          <button
             className="md:hidden p-2 -ml-2"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
-          
+
           {/* Logo */}
-          <NavLink to="/" className="text-black hover:opacity-80 transition-opacity">
-             <Logo className="w-10 h-10 md:w-12 md:h-12 text-black" />
+          <NavLink
+            to="/"
+            className="text-black hover:opacity-80 transition-opacity"
+          >
+            <Logo className="w-10 h-10 md:w-12 md:h-12 text-black" />
           </NavLink>
         </div>
 
@@ -48,8 +64,8 @@ export default function Navbar() {
               to={item.path}
               className={({ isActive }) =>
                 classNames(
-                  'font-mono text-sm text-gray-500 hover:text-black transition-colors flex items-center gap-1',
-                  { 'text-black font-medium': isActive }
+                  "font-mono text-sm text-gray-500 hover:text-black transition-colors flex items-center gap-1",
+                  { "text-black font-medium": isActive },
                 )
               }
             >
@@ -86,8 +102,8 @@ export default function Navbar() {
               onClick={() => setIsOpen(false)}
               className={({ isActive }) =>
                 classNames(
-                  'font-mono text-sm text-gray-500 hover:text-black transition-colors flex items-center gap-2 py-2',
-                  { 'text-black font-medium': isActive }
+                  "font-mono text-sm text-gray-500 hover:text-black transition-colors flex items-center gap-2 py-2",
+                  { "text-black font-medium": isActive },
                 )
               }
             >
