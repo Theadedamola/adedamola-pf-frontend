@@ -1,13 +1,26 @@
-import { useParams, Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { ArrowLeft, Calendar, ArrowRight } from 'lucide-react';
-import { useProject, useProjects } from '@/hooks/queries/useProjectQueries';
-import SEO from '@/components/common/SEO';
+import { useParams, Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { ArrowLeft, Calendar, ArrowRight } from "lucide-react";
+import { useProject, useProjects } from "@/hooks/queries/useProjectQueries";
+import SEO from "@/components/common/SEO";
+import ImageLightbox, {
+  ClickableImage,
+} from "@/components/common/ImageLightbox";
+import { useState } from "react";
 
 export default function ProjectDetails() {
   const { slug } = useParams<{ slug: string }>();
-  const { data, isLoading, error } = useProject(slug || '');
+  const { data, isLoading, error } = useProject(slug || "");
   const { data: projectsData } = useProjects(1, 100);
+
+  // Lightbox state
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxImage, setLightboxImage] = useState({ src: "", alt: "" });
+
+  const openLightbox = (src: string, alt: string) => {
+    setLightboxImage({ src, alt });
+    setLightboxOpen(true);
+  };
 
   if (isLoading) {
     return (
@@ -40,7 +53,8 @@ export default function ProjectDetails() {
     );
   }
 
-  const { title, createdAt, tags, coverImage, contentBlocks } = data.data;
+  const { title, createdAt, tags, coverImage, contentBlocks, excerpt } =
+    data.data;
   const formattedDate = new Date(createdAt).getFullYear().toString();
 
   // Sort blocks by order just in case
@@ -48,25 +62,35 @@ export default function ProjectDetails() {
 
   // Determine next project
   const projects = projectsData?.projects || [];
-  const currentIndex = projects.findIndex(p => p.slug === slug);
-  const nextProject = currentIndex !== -1 && currentIndex < projects.length - 1 
-    ? projects[currentIndex + 1] 
-    : null;
+  const currentIndex = projects.findIndex((p) => p.slug === slug);
+  const nextProject =
+    currentIndex !== -1 && currentIndex < projects.length - 1
+      ? projects[currentIndex + 1]
+      : null;
 
-  const projectDescription = data.data.excerpt || `Check out ${title}, a project by Adedamola.`;
+  const projectDescription =
+    excerpt || `Check out ${title}, a project by Adedamola.`;
 
   return (
     <div className="min-h-screen transition-colors duration-500 text-gray-900">
-      <SEO 
-        title={`${title} - Adedamola`}
+      <SEO
+        title={`${title} | Adedamola`}
         description={projectDescription}
         image={coverImage}
-        url={`/projects/${slug}`}
+        url={`https://adedamola-dev.netlify.app/projects/${slug}`}
         type="article"
       />
-      
+
+      {/* Image Lightbox */}
+      <ImageLightbox
+        isOpen={lightboxOpen}
+        imageSrc={lightboxImage.src}
+        imageAlt={lightboxImage.alt}
+        onClose={() => setLightboxOpen(false)}
+      />
+
       <main className="pt-32 pb-20 px-4 md:px-8 max-w-4xl mx-auto">
-        <Link 
+        <Link
           to="/projects"
           className="inline-flex items-center gap-2 text-sm opacity-60 hover:opacity-100 transition-opacity mb-8"
         >
@@ -87,7 +111,7 @@ export default function ProjectDetails() {
                 {formattedDate}
               </span>
             </div>
-            
+
             <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold mb-8 leading-tight">
               {title}
             </h1>
@@ -95,7 +119,10 @@ export default function ProjectDetails() {
             {tags.length > 0 && (
               <div className="flex flex-wrap gap-2 mb-8">
                 {tags.map((tag, i) => (
-                  <span key={i} className="text-sm px-3 py-1 rounded-full bg-gray-100 opacity-80">
+                  <span
+                    key={i}
+                    className="text-sm px-3 py-1 rounded-full bg-gray-100 opacity-80"
+                  >
                     {tag}
                   </span>
                 ))}
@@ -106,10 +133,11 @@ export default function ProjectDetails() {
           {/* Cover Image */}
           {coverImage && (
             <div className="aspect-video w-full overflow-hidden rounded-3xl mb-16 shadow-2xl">
-              <img 
-                src={coverImage} 
+              <ClickableImage
+                src={coverImage}
                 alt={title}
                 className="w-full h-full object-cover"
+                onClick={() => openLightbox(coverImage, title)}
               />
             </div>
           )}
@@ -117,22 +145,30 @@ export default function ProjectDetails() {
           {/* Content */}
           <div className="prose prose-lg dark:prose-invert max-w-none">
             {sortedBlocks.map((block, index) => {
-              if (block.type === 'image') {
+              if (block.type === "image") {
                 return (
                   <figure key={index} className="my-12">
-                    <img 
-                      src={block.value} 
-                      alt={`Content image ${index + 1}`} 
+                    <ClickableImage
+                      src={block.value}
+                      alt={`Content image ${index + 1}`}
                       className="w-full rounded-2xl"
+                      onClick={() =>
+                        openLightbox(block.value, `Content image ${index + 1}`)
+                      }
                     />
                   </figure>
                 );
               }
-              
+
               return (
-                <p key={index} className="whitespace-pre-wrap mb-6 text-lg leading-relaxed opacity-90">
-                  {block.value}
-                </p>
+                <div
+                  key={index}
+                  className="prose prose-lg max-w-none mb-6 text-lg leading-relaxed opacity-90 
+                    [&>p]:mb-4 [&>ul]:list-disc [&>ul]:pl-6 [&>ol]:list-decimal [&>ol]:pl-6 
+                    [&>blockquote]:border-l-4 [&>blockquote]:border-gray-300 [&>blockquote]:pl-4 [&>blockquote]:italic [&>blockquote]:text-gray-600
+                    [&_a]:text-blue-600 [&_a]:underline [&_a:hover]:text-blue-800"
+                  dangerouslySetInnerHTML={{ __html: block.value }}
+                />
               );
             })}
           </div>
@@ -140,8 +176,13 @@ export default function ProjectDetails() {
           {/* Next Project Navigation */}
           {nextProject && (
             <div className="mt-24 pt-12 border-t border-gray-200 ">
-              <Link to={`/projects/${nextProject.slug}`} className="group block">
-                <div className="text-sm font-mono opacity-60 mb-4">Next Project</div>
+              <Link
+                to={`/projects/${nextProject.slug}`}
+                className="group block"
+              >
+                <div className="text-sm font-mono opacity-60 mb-4">
+                  Next Project
+                </div>
                 <div className="flex justify-between items-center">
                   <h3 className="text-3xl md:text-5xl group-hover:opacity-60 transition-opacity">
                     {nextProject.title}

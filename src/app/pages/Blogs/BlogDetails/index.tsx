@@ -1,12 +1,25 @@
-import { useParams, Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { Clock, Calendar, ArrowLeft } from 'lucide-react';
-import { useBlog } from '@/hooks/queries/useBlogQueries';
-import SEO from '@/components/common/SEO';
+import { useParams, Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { Clock, Calendar, ArrowLeft } from "lucide-react";
+import { useBlog } from "@/hooks/queries/useBlogQueries";
+import SEO from "@/components/common/SEO";
+import ImageLightbox, {
+  ClickableImage,
+} from "@/components/common/ImageLightbox";
+import { useState } from "react";
 
 export default function BlogDetails() {
   const { slug } = useParams<{ slug: string }>();
-  const { data, isLoading, error } = useBlog(slug || '');
+  const { data, isLoading, error } = useBlog(slug || "");
+
+  // Lightbox state
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxImage, setLightboxImage] = useState({ src: "", alt: "" });
+
+  const openLightbox = (src: string, alt: string) => {
+    setLightboxImage({ src, alt });
+    setLightboxOpen(true);
+  };
 
   if (isLoading) {
     return (
@@ -39,30 +52,46 @@ export default function BlogDetails() {
     );
   }
 
-  const { title, createdAt, readingTime, tags, coverImage, contentBlocks, excerpt } = data.data;
-  const formattedDate = new Date(createdAt).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
+  const {
+    title,
+    createdAt,
+    readingTime,
+    tags,
+    coverImage,
+    contentBlocks,
+    excerpt,
+  } = data.data;
+  const formattedDate = new Date(createdAt).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
   });
 
   // Sort blocks by order just in case
   const sortedBlocks = [...contentBlocks].sort((a, b) => a.order - b.order);
 
-  const blogDescription = data.data.excerpt || `Read ${title}, a blog post by Adedamola.`;
+  const blogDescription = excerpt || `Read ${title}, a blog post by Adedamola.`;
 
   return (
     <div className="min-h-screen transition-colors duration-500 text-gray-900">
-      <SEO 
-        title={`${title} - Adedamola`}
+      <SEO
+        title={`${title} | Adedamola`}
         description={blogDescription}
         image={coverImage}
-        url={`/blogs/${slug}`}
+        url={`https://adedamola-dev.netlify.app/blogs/${slug}`}
         type="article"
       />
-      
+
+      {/* Image Lightbox */}
+      <ImageLightbox
+        isOpen={lightboxOpen}
+        imageSrc={lightboxImage.src}
+        imageAlt={lightboxImage.alt}
+        onClose={() => setLightboxOpen(false)}
+      />
+
       <main className="pt-32 pb-20 px-4 md:px-8 max-w-4xl mx-auto">
-        <Link 
+        <Link
           to="/blogs"
           className="inline-flex items-center gap-2 text-sm opacity-60 hover:opacity-100 transition-opacity mb-8"
         >
@@ -88,7 +117,7 @@ export default function BlogDetails() {
                 {readingTime} min read
               </span>
             </div>
-            
+
             <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold mb-8 leading-tight">
               {title}
             </h1>
@@ -96,7 +125,10 @@ export default function BlogDetails() {
             {tags.length > 0 && (
               <div className="flex flex-wrap gap-2 mb-8">
                 {tags.map((tag, i) => (
-                  <span key={i} className="text-sm px-3 py-1 rounded-full bg-gray-100 opacity-80">
+                  <span
+                    key={i}
+                    className="text-sm px-3 py-1 rounded-full bg-gray-100 opacity-80"
+                  >
                     {tag}
                   </span>
                 ))}
@@ -107,10 +139,11 @@ export default function BlogDetails() {
           {/* Cover Image */}
           {coverImage && (
             <div className="aspect-video w-full overflow-hidden rounded-3xl mb-16 shadow-2xl">
-              <img 
-                src={coverImage} 
+              <ClickableImage
+                src={coverImage}
                 alt={title}
                 className="w-full h-full object-cover"
+                onClick={() => openLightbox(coverImage, title)}
               />
             </div>
           )}
@@ -125,22 +158,30 @@ export default function BlogDetails() {
           {/* Content */}
           <div className="prose prose-lg dark:prose-invert max-w-none">
             {sortedBlocks.map((block, index) => {
-              if (block.type === 'image') {
+              if (block.type === "image") {
                 return (
                   <figure key={index} className="my-12">
-                    <img 
-                      src={block.value} 
-                      alt={`Content image ${index + 1}`} 
+                    <ClickableImage
+                      src={block.value}
+                      alt={`Content image ${index + 1}`}
                       className="w-full rounded-2xl"
+                      onClick={() =>
+                        openLightbox(block.value, `Content image ${index + 1}`)
+                      }
                     />
                   </figure>
                 );
               }
-              
+
               return (
-                <p key={index} className="whitespace-pre-wrap mb-6 text-lg leading-relaxed opacity-90">
-                  {block.value}
-                </p>
+                <div
+                  key={index}
+                  className="prose prose-lg max-w-none mb-6 text-lg leading-relaxed opacity-90 
+                    [&>p]:mb-4 [&>ul]:list-disc [&>ul]:pl-6 [&>ol]:list-decimal [&>ol]:pl-6 
+                    [&>blockquote]:border-l-4 [&>blockquote]:border-gray-300 [&>blockquote]:pl-4 [&>blockquote]:italic [&>blockquote]:text-gray-600
+                    [&_a]:text-blue-600 [&_a]:underline [&_a:hover]:text-blue-800"
+                  dangerouslySetInnerHTML={{ __html: block.value }}
+                />
               );
             })}
           </div>
