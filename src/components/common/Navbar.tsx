@@ -41,7 +41,7 @@ export default function Navbar() {
         <div className="flex items-center gap-4">
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 -ml-2"
+            className="lg:hidden p-2 -ml-2"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -57,7 +57,7 @@ export default function Navbar() {
         </div>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex flex-wrap gap-8">
+        <div className="hidden lg:flex flex-wrap gap-8">
           {navItems.map((item) => (
             <NavLink
               key={item.path}
@@ -94,7 +94,7 @@ export default function Navbar() {
 
       {/* Mobile Menu Overlay */}
       {isOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-white border-b border-gray-100 p-6 flex flex-col gap-4 shadow-lg">
+        <div className="lg:hidden absolute top-full left-0 right-0 bg-white border-b border-gray-100 p-6 flex flex-col gap-4 shadow-lg">
           {navItems.map((item) => (
             <NavLink
               key={item.path}

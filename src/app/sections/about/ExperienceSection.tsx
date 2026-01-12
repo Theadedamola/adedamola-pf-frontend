@@ -4,28 +4,28 @@ const experiences = [
   {
     role: "Design Engineer",
     company: "Zmarket",
-    period: "2024 - Present",
+    period: "2025 - Present",
     description:
       "Designing and implementing scalable e-commerce solutions with React and Next.js, focusing on performance and user experience.",
   },
   {
     role: "Design Engineer",
     company: "Reycasa Technologies",
-    period: "2023 - Present",
+    period: "2024 - Present",
     description:
       "Designing and implementing modern web applications with cutting-edge technologies and best practices.",
   },
   {
     role: "Product Designer",
     company: "NagidaFoods",
-    period: "2023 - 2024",
+    period: "2024 - 2025",
     description:
       "Designing and implementing a comprehensive digital platform to increase customer engagement and streamline operations. Designed end to end product varying accross inventory, admin and finance management, sales, and delivery. A full food ordering mobile application",
   },
   {
     role: "Freelance Designer",
     company: "Self-Employed",
-    period: "2021 - Present",
+    period: "2020 - 2023",
     description:
       "Working with diverse clients to bring their visions to life through code and design.",
   },
