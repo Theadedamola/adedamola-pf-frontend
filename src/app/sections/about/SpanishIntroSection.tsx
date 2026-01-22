@@ -24,7 +24,7 @@ export default function SpanishIntroSection() {
   };
 
   return (
-    <section className="py-20 px-6 md:px-12 bg-gradient-to-br from-amber-50 via-orange-50 to-red-50 overflow-hidden">
+    <section className="py-20 px-6 md:px-12 bg-linear-to-br from-amber-50 via-orange-50 to-red-50 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -71,7 +71,7 @@ export default function SpanishIntroSection() {
                 repeat: isPlaying ? Infinity : 0,
                 ease: "easeInOut",
               }}
-              className="w-32 h-32 md:w-40 md:h-40 bg-gradient-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center shadow-2xl hover:shadow-orange-300/50 transition-all duration-300"
+              className="w-32 h-32 md:w-40 md:h-40 bg-linear-to-br from-orange-400 to-red-500 rounded-full flex items-center justify-center shadow-2xl hover:shadow-orange-300/50 transition-all duration-300"
             >
               <motion.div
                 animate={{ rotate: isHovered && !isPlaying ? 360 : 0 }}

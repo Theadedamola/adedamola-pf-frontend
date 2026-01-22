@@ -30,7 +30,7 @@ export default function HeroSection() {
         className="flex flex-col md:flex-row gap-6 md:gap-8"
       >
         {/* Image 1 - Casual */}
-        <div className="relative group overflow-hidden rounded-3xl w-full md:w-1/2 aspect-[4/5]">
+        <div className="relative group overflow-hidden rounded-3xl w-full md:w-1/2 aspect-4/5">
           <img
             src={me1}
             alt="Adedamola - Casual"
@@ -40,7 +40,7 @@ export default function HeroSection() {
         </div>
 
         {/* Image 2 - Professional */}
-        <div className="relative group overflow-hidden rounded-3xl w-full md:w-1/2 aspect-[4/5]">
+        <div className="relative group overflow-hidden rounded-3xl w-full md:w-1/2 aspect-4/5">
           <img
             src={me2}
             alt="Adedamola - Professional"
