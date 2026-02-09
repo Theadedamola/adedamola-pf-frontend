@@ -9,20 +9,26 @@ interface SEOProps {
 }
 
 export default function SEO({
-  title = "Adedamola - Portfolio",
+  title = "Adedamola - Alausa",
   description = "Portfolio of Adedamola, a Product Designer and Frontend Developer building digital experiences.",
-  image = "/thumbnail.png",
-  url = "https://adedamola-dev.netlify.app/",
+  image,
+  url,
   type = "website",
 }: SEOProps) {
-  // Ensure image is absolute URL if it's not
   const baseUrl = "https://adedamola-dev.netlify.app";
-  const absoluteImage = image.startsWith("http")
-    ? image
-    : `${baseUrl}${image.startsWith("/") ? "" : "/"}${image}`;
-  const absoluteUrl = url.startsWith("http")
-    ? url
-    : `${baseUrl}${url.startsWith("/") ? "" : "/"}${url.replace(baseUrl, "")}`;
+
+  // Use fallbacks for null/undefined
+  const seoImage = image || "/thumbnail.png";
+  const seoUrl = url || baseUrl;
+
+  // Ensure absolute URLs
+  const absoluteImage = seoImage.startsWith("http")
+    ? seoImage
+    : `${baseUrl}${seoImage.startsWith("/") ? "" : "/"}${seoImage}`;
+
+  const absoluteUrl = seoUrl.startsWith("http")
+    ? seoUrl
+    : `${baseUrl}${seoUrl.startsWith("/") ? "" : "/"}${seoUrl.replace(baseUrl, "")}`;
 
   return (
     <Helmet>
@@ -30,7 +36,7 @@ export default function SEO({
       <title>{title}</title>
       <meta name="description" content={description} />
 
-      {/* Facebook tags */}
+      {/* Open Graph / Facebook tags */}
       <meta property="og:type" content={type} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
@@ -38,11 +44,11 @@ export default function SEO({
       <meta property="og:url" content={absoluteUrl} />
 
       {/* Twitter tags */}
-      <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:title" content={title} />
-      <meta property="twitter:description" content={description} />
-      <meta property="twitter:image" content={absoluteImage} />
-      <meta property="twitter:url" content={absoluteUrl} />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={absoluteImage} />
+      <meta name="twitter:url" content={absoluteUrl} />
     </Helmet>
   );
 }
