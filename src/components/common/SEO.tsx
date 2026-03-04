@@ -19,22 +19,24 @@ export default function SEO({
 
   // Use fallbacks for null/undefined
   const seoImage = image || "/thumbnail.png";
-  const seoUrl = url || baseUrl;
 
-  // Ensure absolute URLs
+  // Format URLs correctly
+  const absoluteUrl = url
+    ? url.startsWith("http")
+      ? url
+      : `${baseUrl}${url.startsWith("/") ? "" : "/"}${url}`
+    : baseUrl;
+
   const absoluteImage = seoImage.startsWith("http")
     ? seoImage
     : `${baseUrl}${seoImage.startsWith("/") ? "" : "/"}${seoImage}`;
-
-  const absoluteUrl = seoUrl.startsWith("http")
-    ? seoUrl
-    : `${baseUrl}${seoUrl.startsWith("/") ? "" : "/"}${seoUrl.replace(baseUrl, "")}`;
 
   return (
     <Helmet>
       {/* Standard metadata tags */}
       <title>{title}</title>
       <meta name="description" content={description} />
+      <link rel="canonical" href={absoluteUrl} />
 
       {/* Open Graph / Facebook tags */}
       <meta property="og:type" content={type} />
@@ -42,6 +44,7 @@ export default function SEO({
       <meta property="og:description" content={description} />
       <meta property="og:image" content={absoluteImage} />
       <meta property="og:url" content={absoluteUrl} />
+      <meta property="og:site_name" content="Adedamola" />
 
       {/* Twitter tags */}
       <meta name="twitter:card" content="summary_large_image" />
@@ -49,6 +52,7 @@ export default function SEO({
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={absoluteImage} />
       <meta name="twitter:url" content={absoluteUrl} />
+      <meta name="twitter:creator" content="@Theadedamola_" />
     </Helmet>
   );
 }

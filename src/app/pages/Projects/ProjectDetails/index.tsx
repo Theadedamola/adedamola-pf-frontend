@@ -77,7 +77,7 @@ export default function ProjectDetails() {
         title={`${title} | Adedamola`}
         description={projectDescription}
         image={coverImage}
-        url={`https://adedamola.dev/projects/${slug}`}
+        url={`/projects/${slug}`}
         type="article"
       />
 
