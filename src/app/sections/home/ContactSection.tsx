@@ -1,7 +1,7 @@
-import { motion } from 'framer-motion';
-import { Input, TextArea } from '@/components/common/Input';
-import { Button } from '@/components/common/Button';
-import workWithMeImage from '@/assets/work-with-me.png';
+import { motion } from "framer-motion";
+import { Input, TextArea } from "@/components/common/Input";
+import { Button } from "@/components/common/Button";
+import workWithMeImage from "@/assets/work-with-me.png";
 
 export default function ContactSection() {
   return (
@@ -30,25 +30,23 @@ export default function ContactSection() {
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
             className="space-y-6"
-            onSubmit={(e) => e.preventDefault()}
+            action="https://formsubmit.co/hello@adedamola.dev"
+            method="POST"
           >
-            <Input 
-              placeholder="Your name" 
-              name="name"
-            />
-            <Input 
-              type="email" 
-              placeholder="Email address" 
-              name="email"
-            />
-            <TextArea 
-              placeholder="Tell me about your project" 
+            <Input placeholder="Your name" name="name" />
+            <Input type="email" placeholder="Email address" name="email" />
+            <TextArea
+              placeholder="Tell me about your project"
               name="message"
               rows={4}
             />
-            
+
             <div className="pt-4">
-              <Button type="submit" variant="primary" className="rounded-full px-8">
+              <Button
+                type="submit"
+                variant="primary"
+                className="rounded-full px-8"
+              >
                 Send Message
               </Button>
             </div>
@@ -64,9 +62,9 @@ export default function ContactSection() {
           className="hidden lg:flex items-center justify-center"
         >
           <div className="w-full aspect-square bg-black rounded-[40px] flex items-center justify-center relative overflow-hidden group hover:shadow-lg transition-shadow duration-500 p-12">
-            <img 
-              src={workWithMeImage} 
-              alt="Work with me" 
+            <img
+              src={workWithMeImage}
+              alt="Work with me"
               className="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-500"
             />
           </div>

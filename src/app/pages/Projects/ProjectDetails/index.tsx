@@ -77,7 +77,7 @@ export default function ProjectDetails() {
         title={`${title} | Adedamola`}
         description={projectDescription}
         image={coverImage}
-        url={`https://adedamola-dev.netlify.app/projects/${slug}`}
+        url={`https://adedamola.dev/projects/${slug}`}
         type="article"
       />
 

@@ -78,7 +78,7 @@ export default function BlogDetails() {
         title={`${title} | Adedamola`}
         description={blogDescription}
         image={coverImage}
-        url={`https://adedamola-dev.netlify.app/blogs/${slug}`}
+        url={`https://adedamola.dev/blogs/${slug}`}
         type="article"
       />
 

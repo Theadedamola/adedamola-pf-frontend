@@ -15,7 +15,7 @@ export default function SEO({
   url,
   type = "website",
 }: SEOProps) {
-  const baseUrl = "https://adedamola-dev.netlify.app";
+  const baseUrl = "https://adedamola.dev";
 
   // Use fallbacks for null/undefined
   const seoImage = image || "/thumbnail.png";
