@@ -11,7 +11,7 @@ export default function SelectedWorks() {
       <section className="py-24 px-6 md:px-12 max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
           <div>
-            <h2 className="text-4xl md:text-7xl font-thaloria mb-4">Selected Works</h2>
+            <h2 className="text-4xl md:text-7xl font-heading mb-4">Case Studies</h2>
             <p className="text-gray-500 max-w-md">
               A curation of projects that challenged my thinking and sharpened my craft.
             </p>
@@ -30,7 +30,7 @@ export default function SelectedWorks() {
     <section className="py-24 px-6 md:px-12 max-w-7xl mx-auto">
       <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
         <div>
-          <h2 className="text-4xl md:text-7xl font-thaloria mb-4">Selected Works</h2>
+          <h2 className="text-4xl md:text-7xl font-heading mb-4">Case Studies</h2>
           <p className="text-gray-500 max-w-md">
             A curation of projects that challenged my thinking and sharpened my craft.
           </p>

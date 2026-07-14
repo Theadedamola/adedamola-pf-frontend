@@ -10,7 +10,7 @@ export default function StorySection() {
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className="max-w-4xl"
       >
-        <h2 className="text-3xl md:text-4xl font-thaloria text-gray-900 mb-8">
+        <h2 className="text-3xl md:text-4xl font-heading text-gray-900 mb-8">
           My Journey
         </h2>
 
@@ -21,7 +21,7 @@ export default function StorySection() {
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
           >
-            I'm <strong className="text-gray-900">Adedamola</strong> — a
+            I'm <strong className="text-gray-900 font-heading">Adedamola</strong> — a
             frontend developer with a passion for creating beautiful, functional
             digital experiences. My journey into tech began with a fascination
             for how things work and a desire to build solutions that make a real

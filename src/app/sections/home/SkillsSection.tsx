@@ -59,8 +59,8 @@ export default function SkillsSection() {
         }}
       />
 
-      <div className="absolute top-12 left-6 md:left-12 z-20 pointer-events-none">
-        <h2 className="text-4xl md:text-5xl font-thaloria text-white mb-2">Capabilities</h2>
+      <div className="absolute top-12 left-6 md:left-32 z-20 pointer-events-none">
+        <h2 className="text-4xl md:text-5xl font-heading text-white mb-2">Capabilities</h2>
         <p className="text-gray-400 text-sm md:text-base font-mono">
           Drag to explore
         </p>

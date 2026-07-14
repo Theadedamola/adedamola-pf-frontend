@@ -1,4 +1,5 @@
-import TestimonialCard from '@/components/common/TestimonialCard';
+import TestimonialCard from "@/components/common/TestimonialCard";
+import { motion } from "framer-motion";
 
 export default function TestimonialSection() {
   const testimonials = [
@@ -6,29 +7,35 @@ export default function TestimonialSection() {
       name: "Frank",
       role: "CEO",
       company: "Zmarket",
-      quote: "Adedamola is a rare breed of developer who understands both the technical and business aspects of product development. His attention to detail and ability to deliver high-quality code is unmatched."
+      quote:
+        "Adedamola is a rare breed of developer who understands both the technical and business aspects of product development. His attention to detail and ability to deliver high-quality code is unmatched.",
     },
     {
       name: "Samuel Adeyemi",
       role: "CEO",
       company: "NagidaFoods",
-      quote: "Working with Adedamola transformed our digital presence. His ability to translate complex ideas into elegant, user-friendly solutions is remarkable. The new platform he built increased our customer engagement."
+      quote:
+        "Working with Adedamola transformed our digital presence. His ability to translate complex ideas into elegant, user-friendly solutions is remarkable. The new platform he built increased our customer engagement.",
     },
-    // Added a second one for balance, or I can just keep one centered.
-    // Let's stick to the requested one primarily, but maybe layout allows for more.
   ];
 
   return (
-    <section className="py-24 px-6 md:px-12 bg-gray-50 overflow-hidden">
+    <section className="py-24 px-6 md:px-12 bg-white border-t border-gray-100 dark:border-gray-900 overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col items-center justify-center mb-16">
-          <h2 className="text-3xl md:text-4xl 2xl:text-6xl font-normal leading-tight tracking-tight text-gray-900 mb-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="flex flex-col items-center justify-center mb-20"
+        >
+          <h2 className="text-4xl md:text-6xl font-normal font-heading leading-tight tracking-tight text-gray-900 mb-6 text-center">
             Kind Words
           </h2>
-          <div className="w-20 h-1 bg-gray-200 rounded-full" />
-        </div>
+          <div className="w-16 h-0.5 bg-gray-200 dark:bg-gray-800 rounded-full" />
+        </motion.div>
 
-        <div className="flex flex-wrap justify-center gap-8 md:gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
           {testimonials.map((testimonial, index) => (
             <TestimonialCard
               key={index}
@@ -36,6 +43,7 @@ export default function TestimonialSection() {
               role={testimonial.role}
               company={testimonial.company}
               quote={testimonial.quote}
+              className={index === 1 ? "lg:border-l lg:border-gray-100 lg:pl-20 dark:lg:border-gray-800" : ""}
             />
           ))}
         </div>

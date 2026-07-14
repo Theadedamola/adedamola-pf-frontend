@@ -12,7 +12,7 @@ export default function HeroSection() {
         className="mb-12"
       >
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal leading-tight tracking-tight text-gray-900 mb-6">
-          <span className="font-thaloria text-5xl md:text-6xl lg:text-7xl">
+          <span className="font-heading text-5xl md:text-6xl lg:text-7xl">
             About Me
           </span>
         </h1>

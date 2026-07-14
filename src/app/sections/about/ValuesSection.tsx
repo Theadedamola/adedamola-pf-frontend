@@ -53,7 +53,7 @@ export default function ValuesSection() {
         transition={{ duration: 0.8 }}
         className="text-center mb-16"
       >
-        <h2 className="text-3xl md:text-4xl font-thaloria text-gray-900 mb-4">
+        <h2 className="text-3xl md:text-4xl font-heading text-gray-900 mb-4">
           What I Stand For
         </h2>
         <p className="text-gray-600 text-lg max-w-2xl mx-auto">

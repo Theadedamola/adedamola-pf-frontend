@@ -1,56 +1,59 @@
 import { motion } from "framer-motion";
-import { Input, TextArea } from "@/components/common/Input";
 import { Button } from "@/components/common/Button";
+import { Link } from "react-router-dom";
 import workWithMeImage from "@/assets/work-with-me.png";
 
 export default function ContactSection() {
   return (
-    <section className="py-24 px-6 md:px-12 max-w-7xl mx-auto bg-white">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
-        {/* Left Column: Content & Form */}
+    <section className="py-24 px-6 md:px-12 max-w-7xl mx-auto bg-white border-t border-gray-50">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        {/* Left Column: Content & CTA */}
         <div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-12"
+            className="mb-8"
           >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-normal leading-tight mb-4 text-gray-900">
+            <h2 className="text-4xl md:text-6xl font-normal leading-tight mb-6 text-gray-900 tracking-tight">
               Got a challenge? <br />
               Let's build something remarkable.
             </h2>
-            <p className="text-gray-500 text-sm md:text-base">
-              From concept to code, I'm ready to bring your vision to life.
+            <p className="text-gray-500 text-sm md:text-base mb-8 max-w-md">
+              From concept to code, I'm ready to bring your vision to life. 
+              Let's discuss how we can work together to build products that scale.
             </p>
           </motion.div>
 
-          <motion.form
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="space-y-6"
-            action="https://formsubmit.co/hello@adedamola.dev"
-            method="POST"
           >
-            <Input placeholder="Your name" name="name" />
-            <Input type="email" placeholder="Email address" name="email" />
-            <TextArea
-              placeholder="Tell me about your project"
-              name="message"
-              rows={4}
-            />
-
-            <div className="pt-4">
+            <Link to="/contact">
               <Button
-                type="submit"
                 variant="primary"
-                className="rounded-full px-8"
+                className="rounded-full px-8 py-6 text-base md:text-lg flex items-center gap-2 group"
               >
-                Send Message
+                <span>Get in touch</span>
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="group-hover:translate-x-1 transition-transform duration-300"
+                >
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
               </Button>
-            </div>
-          </motion.form>
+            </Link>
+          </motion.div>
         </div>
 
         {/* Right Column: Decorative Card */}

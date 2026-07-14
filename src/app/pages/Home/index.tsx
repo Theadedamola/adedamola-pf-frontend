@@ -1,5 +1,6 @@
 import HeroSection from '@/app/sections/home/HeroSection';
 import SelectedWorks from '@/app/sections/home/SelectedWorks';
+import DevOrManaged from '@/app/sections/home/DevOrManaged';
 import SkillsSection from '@/app/sections/home/SkillsSection';
 import TestimonialSection from '@/app/sections/home/TestimonialSection';
 import ContactSection from '@/app/sections/home/ContactSection';
@@ -11,9 +12,11 @@ export default function Home() {
       <SEO />
       <HeroSection />
       <SelectedWorks />
+      <DevOrManaged />
       <SkillsSection />
       <TestimonialSection />
       <ContactSection />
     </div>
   );
 }
+
