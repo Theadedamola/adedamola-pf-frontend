@@ -2,26 +2,56 @@ import { Button } from "@/components/common/Button";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ScrambleText } from "@/components/common/ScrambleText";
+import sequenceWorksVideo from "@/assets/sequence-works.mp4";
 
 export default function HeroSection() {
   return (
-    <section className="min-h-[80vh] flex flex-col justify-center px-6 md:px-12 max-w-7xl mx-auto pt-24">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="w-full"
-      >
-        <div className="max-w-4xl">
-          <h1 className="text-[90px] md:text-[195px] lg:text-[250px] font-bold font-heading tracking-tight text-gray-900 mb-16">
-            <ScrambleText text="Design Engineer" className="inline-block" />
-          </h1>
+    <>
+      <section className="relative h-screen flex flex-col justify-center w-full pt-24 overflow-hidden">
+        {/* Background Video Container */}
+        <div className="absolute inset-0 z-0 bg-black">
+          <video
+            src={sequenceWorksVideo}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover object-top"
+          />
+        </div>
+        {/* Opacity Overlay */}
+        <div className="absolute h-full inset-0 z-0 bg-black/70" />
+
+        {/* Content */}
+        <div className="relative z-10 px-6 md:px-12 max-w-7xl mx-auto w-full">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="w-full"
+          >
+            <div className="max-w-4xl">
+              <h1 className="text-[80px] sm:text-[120px] md:text-[175px] lg:text-[200px] font-bold font-heading tracking-tight text-wrap text-white mb-0">
+                <ScrambleText text="Design Engineer" className="inline-block" />
+              </h1>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="px-6 md:px-12 max-w-7xl mx-auto py-24">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          className="max-w-4xl"
+        >
           <h1 className="text-4xl 2xl:text-6xl font-normal leading-tight tracking-tight text-gray-900 mb-6">
             adedamola crafts clarity from chaos — building intuitive digital
             experiences that feel less like software and more like second
             nature.
           </h1>
-        </div>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0 }}
@@ -43,7 +73,7 @@ export default function HeroSection() {
             </Button>
           </Link>
         </motion.div>
-      </motion.div>
-    </section>
+      </section>
+    </>
   );
 }
