@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import me1 from "@/assets/me1.jpg";
 import me2 from "@/assets/me2.jpeg";
+import { ScrambleText } from "@/components/common/ScrambleText";
 
 export default function HeroSection() {
   return (
@@ -13,7 +14,7 @@ export default function HeroSection() {
       >
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal leading-tight tracking-tight text-gray-900 mb-6">
           <span className="font-heading text-5xl md:text-6xl lg:text-7xl">
-            About Me
+            <ScrambleText text="About Me" className="inline-block" />
           </span>
         </h1>
         <p className="text-lg md:text-xl text-gray-600 max-w-2xl leading-relaxed">

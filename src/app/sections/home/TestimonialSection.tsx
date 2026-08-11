@@ -20,7 +20,7 @@ export default function TestimonialSection() {
   ];
 
   return (
-    <section className="py-24 px-6 md:px-12 bg-white border-t border-gray-100 dark:border-gray-900 overflow-hidden">
+    <section className="py-24 px-6 md:px-12 bg-white border-t border-gray-100 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -32,7 +32,7 @@ export default function TestimonialSection() {
           <h2 className="text-4xl md:text-6xl font-normal font-heading leading-tight tracking-tight text-gray-900 mb-6 text-center">
             Kind Words
           </h2>
-          <div className="w-16 h-0.5 bg-gray-200 dark:bg-gray-800 rounded-full" />
+          <div className="w-16 h-0.5 bg-gray-200 rounded-full" />
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
@@ -43,7 +43,7 @@ export default function TestimonialSection() {
               role={testimonial.role}
               company={testimonial.company}
               quote={testimonial.quote}
-              className={index === 1 ? "lg:border-l lg:border-gray-100 lg:pl-20 dark:lg:border-gray-800" : ""}
+              className={index === 1 ? "lg:border-l lg:border-gray-100 lg:pl-20" : ""}
             />
           ))}
         </div>

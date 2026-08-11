@@ -42,7 +42,7 @@ const itemVariants = {
 
 export default function DevOrManaged() {
   return (
-    <section className="py-24 px-6 md:px-12 max-w-7xl mx-auto border-t border-gray-100 dark:border-gray-900 bg-white">
+    <section className="py-24 px-6 md:px-12 max-w-7xl mx-auto bg-white">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -63,7 +63,7 @@ export default function DevOrManaged() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
-        className="divide-y divide-gray-100 dark:divide-gray-800"
+        className="divide-y divide-gray-200"
       >
         {projects.map((project, idx) => (
           <motion.a

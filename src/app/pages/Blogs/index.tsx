@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useBlogs } from '@/hooks/queries/useBlogQueries';
 import BlogCard from '@/components/common/BlogCard';
+import { ScrambleText } from "@/components/common/ScrambleText";
 
 export default function Blogs() {
   const [page, setPage] = useState(1);
@@ -15,9 +16,9 @@ export default function Blogs() {
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-6xl font-bold mb-6"
+            className="text-4xl md:text-6xl font-bold mb-6 font-heading tracking-tight"
           >
-            Thoughts & Perspectives
+            <ScrambleText text="Thoughts & Perspectives" className="inline-block" />
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}

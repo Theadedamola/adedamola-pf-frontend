@@ -1,6 +1,7 @@
 import { useProjects } from '@/hooks/queries/useProjectQueries';
 import ProjectCard from '@/components/common/ProjectCard';
 import { motion } from 'framer-motion';
+import { ScrambleText } from "@/components/common/ScrambleText";
 
 export default function Projects() {
   const { data, isLoading, error } = useProjects(1, 100); // Fetch up to 100 projects for now
@@ -31,7 +32,9 @@ export default function Projects() {
         transition={{ duration: 0.6 }}
         className="mb-16"
       >
-        <h1 className="text-4xl md:text-6xl font-bold mb-6 font-thaloria">Selected Works</h1>
+        <h1 className="text-4xl md:text-6xl font-bold mb-6 font-heading tracking-tight">
+          <ScrambleText text="Selected Works" className="inline-block" />
+        </h1>
         <p className="text-xl text-gray-600 max-w-2xl">
           A collection of projects that showcase my passion for building digital experiences.
         </p>

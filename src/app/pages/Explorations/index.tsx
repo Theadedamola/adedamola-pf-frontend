@@ -3,6 +3,7 @@ import { useState } from "react";
 import { X, ZoomIn } from "lucide-react";
 import SEO from "@/components/common/SEO";
 import ImageLightbox from "@/components/common/ImageLightbox";
+import { ScrambleText } from "@/components/common/ScrambleText";
 
 // Import exploration images
 import exploration1 from "@/assets/explorations/Dashboard-finance.png";
@@ -118,8 +119,8 @@ export default function Explorations() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-5xl md:text-8xl font-thaloria text-black tracking-tighter opacity-90">
-            Explorations
+          <h1 className="text-5xl md:text-8xl font-heading font-bold text-black tracking-tight opacity-90">
+            <ScrambleText text="Explorations" className="inline-block" />
           </h1>
           <p className="text-gray-400 font-mono text-xs md:text-sm mt-4 uppercase tracking-widest px-2 py-1 inline-block">
             Visual Studies • Concept Designs • Creative Experiments
@@ -149,13 +150,13 @@ export default function Explorations() {
               <motion.div
                 key={index}
                 whileHover={{ scale: 1.02 }}
-                className="group relative rounded-xl overflow-hidden hover:border transition-all hover:shadow-2xl hover:border-gray-200 cursor-pointer"
+                className="group relative rounded-xl overflow-hidden hover:border transition-all hover:shadow-2xl hover:border-gray-200 cursor-pointer aspect-square"
                 onClick={() => setSelectedItem(item)}
               >
                 <img
                   src={item.src}
                   alt={item.title}
-                  className="w-full h-auto object-cover transform transition-transform duration-1000 group-hover:scale-105"
+                  className="w-full h-full object-cover transform transition-transform duration-1000 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-white/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                   <div className="p-4 bg-black text-white rounded-full shadow-2xl">
@@ -201,13 +202,13 @@ export default function Explorations() {
                 {/* Image Area */}
                 <div className="lg:col-span-8 p-4 sm:p-6 md:p-8 bg-gray-50 flex items-center justify-center border-r border-gray-100">
                   <div
-                    className="w-full relative group cursor-zoom-in"
+                    className="w-full aspect-square relative group cursor-zoom-in"
                     onClick={() => setLightboxOpen(true)}
                   >
                     <img
                       src={selectedItem.src}
                       alt={selectedItem.title}
-                      className="w-full h-auto rounded-2xl shadow-lg ring-1 ring-black/5"
+                      className="w-full h-full object-cover rounded-2xl shadow-lg ring-1 ring-black/5"
                     />
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300 flex items-center justify-center rounded-2xl">
                       <div className="opacity-0 group-hover:opacity-100 transition-opacity bg-white p-4 rounded-full shadow-xl">
@@ -226,7 +227,7 @@ export default function Explorations() {
                     className="space-y-8"
                   >
                     <div>
-                      <h2 className="text-4xl md:text-5xl font-thaloria text-black leading-tight mb-4">
+                      <h2 className="text-4xl md:text-5xl font-heading font-bold text-black leading-tight mb-4">
                         {selectedItem.title}
                       </h2>
                       <div className="w-12 h-1.5 bg-black rounded-full" />
