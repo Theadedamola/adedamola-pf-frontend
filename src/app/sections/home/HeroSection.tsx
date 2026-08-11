@@ -2,25 +2,13 @@ import { Button } from "@/components/common/Button";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ScrambleText } from "@/components/common/ScrambleText";
-import sequenceWorksVideo from "@/assets/sequence-works.mp4";
 
 export default function HeroSection() {
   return (
     <>
-      <section className="relative h-screen flex flex-col justify-center w-full pt-24 overflow-hidden">
-        {/* Background Video Container */}
-        <div className="absolute inset-0 z-0 bg-black">
-          <video
-            src={sequenceWorksVideo}
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover object-top"
-          />
-        </div>
-        {/* Opacity Overlay */}
-        <div className="absolute h-full inset-0 z-0 bg-black/70" />
+      <section className="relative h-screen flex flex-col justify-center w-full pt-24 overflow-hidden bg-black">
+        {/* Solid Black Background */}
+        <div className="absolute inset-0 z-0 bg-black" />
 
         {/* Content */}
         <div className="relative z-10 px-6 md:px-12 max-w-7xl mx-auto w-full">
