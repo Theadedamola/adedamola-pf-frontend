@@ -1,57 +1,63 @@
 import { motion } from "framer-motion";
+import ExperiencePill from "@/components/common/ExperiencePill";
 
 export default function StorySection() {
   return (
-    <section className="py-24 px-6 md:px-12 max-w-7xl mx-auto">
+    <section className="py-20 md:py-28 px-6 md:px-12 max-w-6xl mx-auto border-t border-neutral-100">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 15 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="max-w-4xl"
+        className="max-w-3xl"
       >
-        <h2 className="text-3xl md:text-4xl font-heading text-gray-900 mb-8">
-          My Journey
+
+        {/* Section Headline */}
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-normal tracking-tight text-neutral-900 mb-8 leading-[1.2]">
+          building at the seam where <span className="font-heading">design</span> meets <span className="font-mono text-neutral-600">code</span>.
         </h2>
 
-        <div className="space-y-6 text-gray-600 text-lg leading-relaxed">
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-          >
-            I'm <strong className="text-gray-900 font-heading">Adedamola</strong> — a
-            frontend developer with a passion for creating beautiful, functional
-            digital experiences. My journey into tech began with a fascination
-            for how things work and a desire to build solutions that make a real
-            difference in people's lives.
-          </motion.p>
+        {/* Narrative Flow */}
+        <div className="space-y-6 text-sm sm:text-base md:text-lg text-neutral-700 font-normal leading-relaxed">
+          <p>
+            i've never viewed design and engineering as separate disciplines. to me, design is how
+            software feels, behaves, and communicates — while engineering is the rigor that makes it durable,
+            accessible, and fast.
+          </p>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-          >
-            Over the years, I've had the privilege of working with startups and
-            established businesses, helping them bring their visions to life
-            through code. From crafting intuitive user interfaces to
-            architecting scalable frontend solutions, I approach every project
-            with the same level of dedication and attention to detail.
-          </motion.p>
+          <p>
+            my journey started with a fascination for typography, layout hierarchies, and the mechanics of the browser.
+            over the years, that curiosity grew into building high-stakes production systems. currently, as a design engineer at{" "}
+            <ExperiencePill
+              name="zmarket"
+              iconBg="bg-blue-600"
+              href="https://zmarket.ng"
+            />
+            , i maintain design system foundations and collaborate tightly with engineering teams to ship
+            intuitive e-commerce experiences.
+          </p>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
-          >
-            When I'm not coding, you'll find me exploring new technologies,
-            contributing to open source projects, or mentoring aspiring
-            developers. I believe in the power of continuous learning and
-            sharing knowledge with the community.
-          </motion.p>
+          <p>
+            previously, i contributed to scalable digital infrastructure at{" "}
+            <ExperiencePill
+              name="reycasa"
+              iconBg="bg-indigo-600"
+            />
+            , and spearheaded end-to-end product design for{" "}
+            <ExperiencePill
+              name="nagida foods"
+              iconBg="bg-emerald-600"
+              href="https://nagidafoods.com"
+            />
+            , crafting entire multi-sided platforms encompassing food delivery apps, administrative inventory tools,
+            and real-time logistics tracking.
+          </p>
+
+          <p>
+            beyond shipping code, i obsess over the small things: smooth keyboard navigation, hairline layout boundaries,
+            performant 60fps micro-animations, and minimal bundle sizes. software should be delightful to use and a pleasure
+            to maintain.
+          </p>
         </div>
       </motion.div>
     </section>

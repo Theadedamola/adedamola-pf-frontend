@@ -1,67 +1,91 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/common/Button";
-import { Download } from "lucide-react";
-import docImg from "@/assets/docImg.png";
+import { ArrowDownRight, ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const RESUME_URL =
-  "https://drive.google.com/file/d/1LM2XE0GTNVoaqvj8eFllRwUWOfUj9Yk4/view?usp=sharing";
+  "https://drive.google.com/file/d/1Yu5HnRJZjcoUoajpEDGwWqP26y4irAjf/view?usp=sharing";
+
+const SOCIAL_LINKS = [
+  { label: "github", href: "https://github.com/adedamolaalausa" },
+  { label: "linkedin", href: "https://linkedin.com/in/adedamolaalausa" },
+  { label: "twitter / x", href: "https://x.com/theadedamola" },
+  { label: "whatsapp", href: "https://wa.me/2347067276819" },
+  { label: "email", href: "mailto:adedamolaalausa04@gmail.com" },
+];
 
 export default function ResumeSection() {
   return (
-    <section className="py-24 px-6 md:px-12 bg-gray-50">
-      <div className="max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col md:flex-row items-center justify-between gap-12"
-        >
-          {/* Text Content */}
-          <div className="flex-1 text-center md:text-left">
-            <h2 className="text-3xl md:text-4xl font-thaloria text-gray-900 mb-4">
-              Get My Résumé
-            </h2>
-            <p className="text-gray-600 text-lg mb-8 max-w-md">
-              Interested in my full experience and qualifications? Download my
-              résumé to learn more about my skills, projects, and professional
-              background.
-            </p>
-            <a href={RESUME_URL} target="_blank" rel="noopener noreferrer">
-              <Button
-                variant="primary"
-                size="lg"
-                className="rounded-full px-8"
-                rightIcon={<Download className="w-5 h-5" />}
-              >
-                Download Résumé
-              </Button>
-            </a>
-          </div>
+    <section className="py-24 md:py-32 px-6 md:px-12 max-w-6xl mx-auto border-t border-neutral-100">
+      <motion.div
+        initial={{ opacity: 0, y: 15 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className="max-w-3xl"
+      >
 
-          {/* Document Icon */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="relative group"
+        {/* Headline & Description */}
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-normal tracking-tight text-neutral-900 mb-4 leading-[1.15]">
+          want the <span className="font-heading">full record</span>?
+        </h2>
+        <p className="text-sm sm:text-base md:text-lg text-neutral-600 font-normal leading-relaxed mb-8 max-w-xl">
+          a comprehensive breakdown of architectural competencies, design system governance, and production milestones.
+        </p>
+
+        {/* Buttons */}
+        <div className="flex flex-wrap items-center gap-3.5 mb-14">
+          <a
+            href={RESUME_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block"
           >
-            <div className="w-48 h-48 md:w-64 md:h-64 flex items-center justify-center bg-white rounded-3xl shadow-xl group-hover:shadow-2xl transition-shadow duration-500">
-              <motion.img
-                src={docImg}
-                alt="Resume Document"
-                className="w-32 h-32 md:w-44 md:h-44 object-contain"
-                whileHover={{ scale: 1.05, rotate: 2 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              />
-            </div>
-            {/* Decorative elements */}
-            <div className="absolute -top-4 -right-4 w-8 h-8 bg-blue-100 rounded-full opacity-60" />
-            <div className="absolute -bottom-6 -left-6 w-12 h-12 bg-blue-50 rounded-full opacity-80" />
-          </motion.div>
-        </motion.div>
-      </div>
+            <Button
+              variant="primary"
+              size="lg"
+              className="rounded-full px-7 py-3 text-sm sm:text-base flex items-center gap-2 group shadow-sm hover:shadow-md transition-all"
+            >
+              <span>view curriculum vitae</span>
+              <ArrowDownRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:translate-y-0.5 transition-transform" />
+            </Button>
+          </a>
+
+          <Link to="/contact" className="inline-block">
+            <Button
+              variant="secondary"
+              size="lg"
+              className="rounded-full px-7 py-3 text-sm sm:text-base flex items-center gap-2 group border-neutral-300 hover:border-neutral-400 transition-all"
+            >
+              <span>get in touch</span>
+              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </Button>
+          </Link>
+        </div>
+
+        {/* Social / Connect Footnote */}
+        <div className="pt-8 border-t border-neutral-200/80">
+          <div className="text-xs font-mono text-neutral-400 mb-4 uppercase tracking-wider">
+            connect & channels
+          </div>
+          <div className="flex flex-wrap gap-x-6 gap-y-2">
+            {SOCIAL_LINKS.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs sm:text-sm font-mono text-neutral-600 hover:text-black transition-colors flex items-center gap-1 group"
+              >
+                <span>{link.label}</span>
+                <span className="text-neutral-400 group-hover:text-black group-hover:translate-x-0.5 transition-all text-[11px]">
+                  ↗
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </motion.div>
     </section>
   );
 }

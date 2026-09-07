@@ -5,72 +5,73 @@ import workWithMeImage from "@/assets/work-with-me.png";
 
 export default function ContactSection() {
   return (
-    <section className="py-24 px-6 md:px-12 max-w-7xl mx-auto bg-white border-t border-gray-50">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-        {/* Left Column: Content & CTA */}
-        <div>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mb-8"
-          >
-            <h2 className="text-4xl md:text-6xl font-normal leading-tight mb-6 text-gray-900 tracking-tight">
-              Got a challenge? <br />
-              Let's build something remarkable.
-            </h2>
-            <p className="text-gray-500 text-sm md:text-base mb-8 max-w-md">
-              From concept to code, I'm ready to bring your vision to life. 
-              Let's discuss how we can work together to build products that scale.
-            </p>
-          </motion.div>
+    <section className="py-24 md:py-36 px-6 md:px-12 bg-white border-t border-neutral-100 overflow-hidden">
+      <div className="max-w-4xl mx-auto flex flex-col items-center justify-center text-center">
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-          >
-            <Link to="/contact">
-              <Button
-                variant="primary"
-                className="rounded-full px-8 py-6 text-base md:text-lg flex items-center gap-2 group"
-              >
-                <span>Get in touch</span>
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="group-hover:translate-x-1 transition-transform duration-300"
-                >
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-              </Button>
-            </Link>
-          </motion.div>
-        </div>
-
-        {/* Right Column: Decorative Card */}
-        <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
+        {/* Centralized Headline with compact collage capsule spanning between text */}
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
-          className="hidden lg:flex items-center justify-center"
+          transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-normal leading-[1.25] text-neutral-900 tracking-tight max-w-3xl"
         >
-          <div className="w-full aspect-square bg-black rounded-[40px] flex items-center justify-center relative overflow-hidden group hover:shadow-lg transition-shadow duration-500 p-12">
-            <img
-              src={workWithMeImage}
-              alt="Work with me"
-              className="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-500"
-            />
-          </div>
+          <span>got a challenge?</span>
+          <span className="inline-flex items-center justify-center mx-2 sm:mx-3.5 align-middle -translate-y-1 sm:-translate-y-2">
+            <span className="relative w-14 sm:w-20 md:w-24 h-9 sm:h-12 md:h-14 rounded-full bg-neutral-950 px-2.5 py-1 flex items-center justify-center border border-neutral-800 shadow-xs hover:scale-105 transition-transform duration-300 select-none">
+              <img
+                src={workWithMeImage}
+                alt="Work with me"
+                className="h-full w-auto object-contain"
+              />
+            </span>
+          </span>
+          <span>let's build something remarkable.</span>
+        </motion.h2>
+
+        {/* Quiet Subtitle description */}
+        <motion.p
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="text-neutral-500 text-sm sm:text-base md:text-lg mt-6 md:mt-8 max-w-lg leading-relaxed font-normal"
+        >
+          from concept to code, i'm ready to bring your vision to life.
+          let's discuss how we can build products that scale.
+        </motion.p>
+
+        {/* Centralized Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="mt-8 md:mt-10"
+        >
+          <Link to="/contact">
+            <Button
+              variant="primary"
+              size="lg"
+              className="rounded-full px-8 py-3 text-sm sm:text-base flex items-center gap-2 group shadow-sm hover:shadow-md transition-all"
+            >
+              <span>get in touch</span>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="group-hover:translate-x-1 transition-transform duration-300"
+              >
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </Button>
+          </Link>
         </motion.div>
       </div>
     </section>

@@ -56,8 +56,8 @@ export default function Navbar() {
   return (
     <nav 
       className={classNames(
-        "fixed top-0 left-0 right-0 z-50 py-8 px-6 md:px-12 transition-all duration-300",
-        scrolled ? "bg-white/90 backdrop-blur-sm shadow-sm" : "bg-transparent"
+        "fixed top-0 left-0 right-0 z-50 px-6 md:px-12 transition-all duration-300",
+        scrolled ? "py-3 bg-white/90 backdrop-blur-sm shadow-sm" : "py-4 md:py-5 bg-transparent"
       )}
     >
       <div className="max-w-7xl mx-auto flex justify-between items-center">
@@ -75,7 +75,7 @@ export default function Navbar() {
             to="/"
             className={classNames("hover:opacity-80 transition-opacity", textColor)}
           >
-            <Logo className={classNames("w-10 h-10 md:w-12 md:h-12", textColor)} />
+            <Logo className={classNames("w-8 h-8 md:w-9 md:h-9", textColor)} />
           </NavLink>
         </div>
 

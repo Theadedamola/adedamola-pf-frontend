@@ -4,6 +4,7 @@ import { X, ZoomIn } from "lucide-react";
 import SEO from "@/components/common/SEO";
 import ImageLightbox from "@/components/common/ImageLightbox";
 import { ScrambleText } from "@/components/common/ScrambleText";
+import { Button } from "@/components/common/Button";
 
 // Import exploration images
 import exploration1 from "@/assets/explorations/Dashboard-finance.png";
@@ -17,240 +18,284 @@ import exploration8 from "@/assets/explorations/mobile-finance.png";
 import exploration9 from "@/assets/explorations/onboarding-exploration.png";
 import exploration10 from "@/assets/explorations/portfolio-hero.png";
 
-const explorations = [
+const EXPLORATIONS = [
   {
-    id: 1,
+    id: "01",
     src: exploration1,
-    title: "Finance Dashboard",
+    title: "finance dashboard",
+    category: "systems & data",
     detail:
-      "A study in minimalist financial data visualization, focusing on clarity and modern aesthetics.",
+      "a study in minimalist financial data visualization, emphasizing legible hierarchy, custom charting, and dense information layout.",
   },
   {
-    id: 2,
+    id: "02",
     src: exploration2,
-    title: "Desktop Experience",
+    title: "desktop workspace",
+    category: "operating system concept",
     detail:
-      "Conceptual desktop interface exploring depth, transparency, and glassmorphism.",
+      "conceptual desktop interface exploring layer depth, subtle translucent materials, and fluid multi-window spatial organization.",
   },
   {
-    id: 3,
+    id: "03",
     src: exploration3,
-    title: "Orders Management",
+    title: "orders management",
+    category: "e-commerce operations",
     detail:
-      "Streamlined order tracking system with emphasis on status clarity and batch actions.",
+      "streamlined bulk fulfillment interface focusing on live status telemetry, rapid batch workflows, and keyboard accessibility.",
   },
   {
-    id: 4,
+    id: "04",
     src: exploration4,
-    title: "Transfer Interface",
+    title: "transfer interface",
+    category: "fintech interaction",
     detail:
-      "Clean, step-by-step money transfer flow designed to reduce user cognitive load.",
+      "clean, multi-step money transfer flow designed to eliminate cognitive friction and provide instantaneous confirmation feedback.",
   },
   {
-    id: 5,
+    id: "05",
     src: exploration5,
-    title: "Product Page Boost",
+    title: "product storefront",
+    category: "editorial commerce",
     detail:
-      "High-conversion product display layout with immersive imagery and clear CTAs.",
+      "high-conversion product showcase combining high-resolution imagery, subtle typography, and obvious purchase pathways.",
   },
   {
-    id: 6,
+    id: "06",
     src: exploration6,
-    title: "Financial Analytics",
+    title: "financial analytics",
+    category: "data visualization",
     detail:
-      "Complex data sets simplified into actionable insights through intuitive charting.",
+      "complex portfolio metrics condensed into actionable trends through balanced chart proportions and high-contrast color stops.",
   },
   {
-    id: 7,
+    id: "07",
     src: exploration7,
-    title: "Mobile Components",
+    title: "mobile design tokens",
+    category: "design system",
     detail:
-      "A library of reusable mobile UI patterns optimized for accessibility and touch targets.",
+      "a modular library of touch-first mobile component primitives calibrated for accessibility, thumb ergonomics, and haptic rhythm.",
   },
   {
-    id: 8,
+    id: "08",
     src: exploration8,
-    title: "Mobile Finance",
+    title: "mobile banking app",
+    category: "mobile application",
     detail:
-      "Banking on the go - a compact but powerful financial management app concept.",
+      "compact, high-velocity financial management experience designed for one-handed operation and immediate account overview.",
   },
   {
-    id: 9,
+    id: "09",
     src: exploration9,
-    title: "Onboarding Flow",
+    title: "onboarding sequence",
+    category: "product activation",
     detail:
-      "Engagement-focused onboarding experience using storytelling and micro-interactions.",
+      "engagement-focused customer onboarding flow leveraging progressive disclosure and micro-interactions to guide user setup.",
   },
   {
-    id: 10,
+    id: "10",
     src: exploration10,
-    title: "Portfolio Hero",
+    title: "editorial portfolio hero",
+    category: "brand & typography",
     detail:
-      "Experimental hero section for a creative portfolio, playing with typography and scale.",
+      "experimental landing experience testing typographic scale, kinetic typography, and non-traditional navigation anchors.",
   },
 ];
 
 export default function Explorations() {
   const [selectedItem, setSelectedItem] = useState<
-    (typeof explorations)[0] | null
+    (typeof EXPLORATIONS)[0] | null
   >(null);
 
-  // Lightbox state for the "fullscreen zoom" inside the modal
+  // Fullscreen Lightbox state
   const [lightboxOpen, setLightboxOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-white text-gray-900 overflow-hidden relative transition-colors duration-500">
+    <div className="min-h-screen bg-white text-neutral-900 transition-colors duration-500">
       <SEO
         title="Explorations | Adedamola"
-        description="A virtual exhibition of design experiments, visual studies, and creative explorations by Adedamola."
-      />
-
-      <ImageLightbox
-        isOpen={lightboxOpen}
-        imageSrc={selectedItem?.src || ""}
-        imageAlt={selectedItem?.title || ""}
-        onClose={() => setLightboxOpen(false)}
+        description="A curation of visual studies, concept designs, and UI experiments by Adedamola."
       />
 
       {/* Header Info */}
-      <div className="pt-32 pb-12 px-6 md:px-12 max-w-7xl mx-auto">
+      <div className="pt-28 md:pt-36 pb-12 px-6 md:px-12 max-w-6xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="max-w-3xl"
         >
-          <h1 className="text-5xl md:text-8xl font-heading font-bold text-black tracking-tight opacity-90">
-            <ScrambleText text="Explorations" className="inline-block" />
+
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal leading-[1.15] tracking-tight text-neutral-900 mb-4">
+            <span className="font-heading">
+              <ScrambleText text="explorations" className="inline-block" />
+            </span>
           </h1>
-          <p className="text-gray-400 font-mono text-xs md:text-sm mt-4 uppercase tracking-widest px-2 py-1 inline-block">
-            Visual Studies • Concept Designs • Creative Experiments
+          <p className="text-base sm:text-lg text-neutral-600 font-normal leading-relaxed">
+            an archive of concept prototypes, design tokens, and visual experiments developed in the margins of production work.
           </p>
+
+          <div className="mt-5 flex items-center gap-2 text-xs font-mono text-neutral-400">
+            <span className="px-2.5 py-0.5 rounded-full bg-neutral-100 border border-neutral-200/80 text-neutral-700">
+              {EXPLORATIONS.length} visual studies archived
+            </span>
+          </div>
         </motion.div>
       </div>
 
-      {/* Exhibition Wall */}
-      <div className="w-full relative pb-32">
-        {/* Gallery Texture */}
-        <div
-          className="fixed inset-0 z-0 opacity-40 pointer-events-none"
-          style={{
-            backgroundImage: "radial-gradient(#e5e7eb 1px, transparent 1px)",
-            backgroundSize: "60px 60px",
-          }}
-        />
-
-        <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-12 md:gap-16"
-          >
-            {explorations.map((item, index) => (
-              <motion.div
-                key={index}
-                whileHover={{ scale: 1.02 }}
-                className="group relative rounded-xl overflow-hidden hover:border transition-all hover:shadow-2xl hover:border-gray-200 cursor-pointer aspect-square"
-                onClick={() => setSelectedItem(item)}
-              >
+      {/* Exhibition Grid */}
+      <div className="max-w-6xl mx-auto px-6 md:px-12 pb-32">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
+        >
+          {EXPLORATIONS.map((item) => (
+            <motion.div
+              key={item.id}
+              whileHover={{ y: -3 }}
+              transition={{ duration: 0.2 }}
+              className="group relative rounded-2xl border border-neutral-200/80 hover:border-neutral-400/90 bg-neutral-50/60 p-2 sm:p-2.5 transition-all duration-500 cursor-pointer"
+              onClick={() => setSelectedItem(item)}
+            >
+              {/* Image Frame */}
+              <div className="relative overflow-hidden rounded-xl aspect-square w-full bg-neutral-100">
                 <img
                   src={item.src}
                   alt={item.title}
-                  className="w-full h-full object-cover transform transition-transform duration-1000 group-hover:scale-105"
+                  className="w-full h-full object-cover transform transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                 />
-                <div className="absolute inset-0 bg-white/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <div className="p-4 bg-black text-white rounded-full shadow-2xl">
-                    <ZoomIn size={28} />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 flex items-center justify-center">
+                  <div className="opacity-0 group-hover:opacity-100 transition-opacity p-3 bg-white/95 text-neutral-900 rounded-full shadow-lg">
+                    <ZoomIn size={18} />
                   </div>
                 </div>
-                <div className="absolute bottom-6 left-6 opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0 duration-300">
-                  <span className="bg-black text-white px-4 py-2 rounded-full font-thaloria text-xl">
+              </div>
+
+              {/* Caption & Metadata */}
+              <div className="mt-3 px-1.5 pb-1 flex items-center justify-between text-xs font-mono">
+                <div className="flex items-center gap-1.5 truncate">
+                  <span className="text-neutral-400">/{item.id}</span>
+                  <span className="text-neutral-800 font-medium lowercase truncate">
                     {item.title}
                   </span>
                 </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
+                <span className="text-neutral-400 group-hover:text-black transition-colors shrink-0 ml-2">
+                  inspect ↗
+                </span>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
 
-      {/* Detail View Modal */}
+      {/* Detail Modal */}
       <AnimatePresence>
         {selectedItem && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-white/95 backdrop-blur-2xl p-4 sm:p-8 md:p-12"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-neutral-950/70 backdrop-blur-md p-4 sm:p-6 md:p-10"
             onClick={() => setSelectedItem(null)}
           >
+            {/* Dismiss Button */}
             <button
-              className="absolute top-8 right-8 p-3 text-gray-400 hover:text-black transition-colors z-50"
+              className="absolute top-5 right-5 sm:top-8 sm:right-8 p-3 text-neutral-300 hover:text-white bg-white/10 hover:bg-white/20 rounded-full transition-all cursor-pointer z-50"
               onClick={() => setSelectedItem(null)}
+              aria-label="Close modal"
             >
-              <X size={32} />
+              <X size={22} />
             </button>
 
+            {/* Modal Dialog Content */}
             <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
+              initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              className="w-full max-w-6xl max-h-[90vh] overflow-y-auto custom-scrollbar bg-white rounded-3xl shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] border border-gray-100 relative"
+              exit={{ scale: 0.95, opacity: 0 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="w-full max-w-5xl max-h-[90vh] overflow-y-auto bg-white rounded-3xl border border-neutral-200/90 shadow-2xl relative"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 lg:gap-8 h-full">
-                {/* Image Area */}
-                <div className="lg:col-span-8 p-4 sm:p-6 md:p-8 bg-gray-50 flex items-center justify-center border-r border-gray-100">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
+                {/* Left: Image Canvas */}
+                <div className="lg:col-span-7 p-5 sm:p-8 bg-neutral-50 flex flex-col items-center justify-center border-b lg:border-b-0 lg:border-r border-neutral-200/80">
                   <div
-                    className="w-full aspect-square relative group cursor-zoom-in"
+                    className="w-full relative group cursor-zoom-in rounded-2xl overflow-hidden border border-neutral-200/80 bg-white shadow-xs"
                     onClick={() => setLightboxOpen(true)}
                   >
                     <img
                       src={selectedItem.src}
                       alt={selectedItem.title}
-                      className="w-full h-full object-cover rounded-2xl shadow-lg ring-1 ring-black/5"
+                      className="w-full h-auto max-h-[65vh] object-contain mx-auto"
                     />
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300 flex items-center justify-center rounded-2xl">
-                      <div className="opacity-0 group-hover:opacity-100 transition-opacity bg-white p-4 rounded-full shadow-xl">
-                        <ZoomIn size={24} className="text-black" />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 flex items-center justify-center">
+                      <div className="opacity-0 group-hover:opacity-100 transition-opacity bg-white/95 px-4 py-2 rounded-full shadow-lg flex items-center gap-2 text-xs font-mono text-neutral-800">
+                        <ZoomIn size={14} />
+                        <span>expand fullscreen</span>
                       </div>
                     </div>
                   </div>
+                  <div className="mt-3 text-[11px] font-mono text-neutral-400 text-center">
+                    click image to view high-res fullscreen
+                  </div>
                 </div>
 
-                {/* Text Area */}
-                <div className="lg:col-span-4 p-8 sm:p-10 md:p-12 flex flex-col justify-center">
-                  <motion.div
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: 0.2 }}
-                    className="space-y-8"
-                  >
+                {/* Right: Editorial Details */}
+                <div className="lg:col-span-5 p-6 sm:p-8 md:p-10 flex flex-col justify-between">
+                  <div className="space-y-6">
                     <div>
-                      <h2 className="text-4xl md:text-5xl font-heading font-bold text-black leading-tight mb-4">
+                      <div className="flex items-center gap-2 text-xs font-mono text-neutral-400 uppercase tracking-widest mb-2">
+                        <span>study /{selectedItem.id}</span>
+                        <span>•</span>
+                        <span className="text-neutral-600 lowercase">{selectedItem.category}</span>
+                      </div>
+
+                      <h2 className="text-2xl sm:text-3xl font-medium tracking-tight text-neutral-900 lowercase leading-tight">
                         {selectedItem.title}
                       </h2>
-                      <div className="w-12 h-1.5 bg-black rounded-full" />
                     </div>
 
-                    <p className="text-lg md:text-xl text-gray-600 leading-relaxed font-light">
+                    <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed font-normal">
                       {selectedItem.detail}
                     </p>
 
-                    <div className="space-y-4 pt-8 border-t border-gray-100 mt-8">
-                      <p className="text-xs font-mono text-gray-400 uppercase tracking-[0.2em]">
-                        Context
-                      </p>
-                      <div className="flex flex-wrap gap-3">
-                        <span className="px-4 py-2 bg-gray-100 rounded-full text-xs font-medium text-gray-600">
-                          Visual Study
+                    <div className="pt-6 border-t border-neutral-100 space-y-3">
+                      <span className="text-xs font-mono text-neutral-400 uppercase tracking-wider block">
+                        classification
+                      </span>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="px-3 py-1 bg-neutral-100 border border-neutral-200/60 rounded-full text-xs font-mono text-neutral-700 lowercase">
+                          visual study
                         </span>
-                        <span className="px-4 py-2 bg-gray-100 rounded-full text-xs font-medium text-gray-600">
-                          UI/UX
+                        <span className="px-3 py-1 bg-neutral-100 border border-neutral-200/60 rounded-full text-xs font-mono text-neutral-700 lowercase">
+                          ui architecture
+                        </span>
+                        <span className="px-3 py-1 bg-neutral-100 border border-neutral-200/60 rounded-full text-xs font-mono text-neutral-700 lowercase">
+                          exploration
                         </span>
                       </div>
                     </div>
-                  </motion.div>
+                  </div>
+
+                  {/* Actions */}
+                  <div className="pt-8 mt-6 border-t border-neutral-100 flex items-center gap-3">
+                    <Button
+                      variant="primary"
+                      size="sm"
+                      onClick={() => setLightboxOpen(true)}
+                      className="rounded-full px-5 py-2.5 text-xs font-mono flex items-center gap-2"
+                    >
+                      <span>fullscreen view</span>
+                      <ZoomIn size={14} />
+                    </Button>
+                    <button
+                      onClick={() => setSelectedItem(null)}
+                      className="px-5 py-2.5 rounded-full border border-neutral-200 text-xs font-mono text-neutral-600 hover:text-black hover:border-neutral-400 transition-colors cursor-pointer"
+                    >
+                      close
+                    </button>
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -258,21 +303,13 @@ export default function Explorations() {
         )}
       </AnimatePresence>
 
-      <style>{`
-        .custom-scrollbar::-webkit-scrollbar {
-          width: 8px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-          background: transparent;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: #e5e7eb;
-          border-radius: 10px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: #d1d5db;
-        }
-      `}</style>
+      {/* Fullscreen Lightbox placed AFTER modal with top-level z-[9999] */}
+      <ImageLightbox
+        isOpen={lightboxOpen}
+        imageSrc={selectedItem?.src || ""}
+        imageAlt={selectedItem?.title || ""}
+        onClose={() => setLightboxOpen(false)}
+      />
     </div>
   );
 }
