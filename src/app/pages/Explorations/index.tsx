@@ -110,7 +110,7 @@ export default function Explorations() {
   const [lightboxOpen, setLightboxOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-white text-neutral-900 transition-colors duration-500">
+    <div className="min-h-screen bg-[#FAF8F5] text-neutral-900 transition-colors duration-500">
       <SEO
         title="Explorations | Adedamola"
         description="A curation of visual studies, concept designs, and UI experiments by Adedamola."

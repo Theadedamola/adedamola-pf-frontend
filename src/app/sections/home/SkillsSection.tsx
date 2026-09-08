@@ -1,18 +1,18 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
+import {
+  FigmaLogo,
+  DesignSystemsLogo,
+  ReactLogo,
+  NextLogo,
+  TypeScriptLogo,
+  TailwindLogo,
+  FramerMotionLogo,
+  NodeLogo,
+  GitLogo,
+} from "@/components/common/TechLogos";
 
-// Import skill icons
-import skill1 from "@/assets/skillicon/skillicon1.png"; // Figma
-import skill2 from "@/assets/skillicon/skillicon2.png"; // React
-import skill3 from "@/assets/skillicon/skillicon3.png"; // TypeScript
-import skill4 from "@/assets/skillicon/skillicon4.png"; // Node.js
-import skill5 from "@/assets/skillicon/skillicon5.png"; // Tailwind
-import skill6 from "@/assets/skillicon/skillicon6.png"; // Motion
-import skill7 from "@/assets/skillicon/skillicon7.png"; // Next.js
-import skill8 from "@/assets/skillicon/skillicon8.png"; // Git
-import skill9 from "@/assets/skillicon/skillicon9.png"; // Design
-
-type Token = string | { type: "tool"; name: string; icon: string };
+type Token = string | { type: "tool"; name: string; icon: React.ReactNode };
 
 const PARAGRAPHS: { tokens: Token[]; range: [number, number] }[] = [
   {
@@ -37,9 +37,9 @@ const PARAGRAPHS: { tokens: Token[]; range: [number, number] }[] = [
     range: [0.18, 0.42],
     tokens: [
       "in",
-      { type: "tool", name: "figma", icon: skill1 },
+      { type: "tool", name: "figma", icon: <FigmaLogo size="100%" /> },
       "and",
-      { type: "tool", name: "design systems", icon: skill9 },
+      { type: "tool", name: "design systems", icon: <DesignSystemsLogo size="100%" /> },
       ",",
       "i",
       "explore",
@@ -78,12 +78,12 @@ const PARAGRAPHS: { tokens: Token[]; range: [number, number] }[] = [
       "frontend",
       "architecture",
       "using",
-      { type: "tool", name: "react", icon: skill2 },
+      { type: "tool", name: "react", icon: <ReactLogo size="100%" /> },
       ",",
-      { type: "tool", name: "next.js", icon: skill7 },
+      { type: "tool", name: "next.js", icon: <NextLogo size="100%" /> },
       ",",
       "and",
-      { type: "tool", name: "typescript", icon: skill3 },
+      { type: "tool", name: "typescript", icon: <TypeScriptLogo size="100%" /> },
       ".",
       "by",
       "enforcing",
@@ -121,9 +121,9 @@ const PARAGRAPHS: { tokens: Token[]; range: [number, number] }[] = [
       "interaction",
       "physics",
       "with",
-      { type: "tool", name: "tailwind css", icon: skill5 },
+      { type: "tool", name: "tailwind css", icon: <TailwindLogo size="100%" /> },
       "and",
-      { type: "tool", name: "framer motion", icon: skill6 },
+      { type: "tool", name: "framer motion", icon: <FramerMotionLogo size="100%" /> },
       "—",
       "choreographing",
       "fluid",
@@ -156,13 +156,13 @@ const PARAGRAPHS: { tokens: Token[]; range: [number, number] }[] = [
       "backend",
       "logic",
       "in",
-      { type: "tool", name: "node.js", icon: skill4 },
+      { type: "tool", name: "node.js", icon: <NodeLogo size="100%" /> },
       "and",
       "disciplined",
       "version",
       "control",
       "in",
-      { type: "tool", name: "git", icon: skill8 },
+      { type: "tool", name: "git", icon: <GitLogo size="100%" /> },
       "—",
       "turning",
       "creative",
@@ -207,7 +207,6 @@ export default function SkillsSection() {
       <div className="relative z-10 max-w-4xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16 md:mb-24">
-
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-heading font-bold text-white tracking-tight mb-4">
             Capabilities
           </h2>
@@ -296,7 +295,7 @@ function ScrollToolPill({
 }: {
   progress: MotionValue<number>;
   range: [number, number];
-  icon: string;
+  icon: React.ReactNode;
   name: string;
 }) {
   const opacity = useTransform(progress, range, [0.15, 1]);
@@ -312,12 +311,12 @@ function ScrollToolPill({
       style={{ opacity, scale, borderColor }}
       className="inline-flex items-center gap-1.5 px-2.5 py-0.5 mx-1 rounded-full bg-neutral-900/90 border text-neutral-200 font-medium text-[0.72em] align-baseline -translate-y-[2px] transition-all select-none shadow-xs"
     >
-      <motion.img
-        src={icon}
-        alt={name}
+      <motion.div
         style={{ filter: useTransform(grayscale, (v) => `grayscale(${v * 100}%)`) }}
-        className="w-3.5 h-3.5 sm:w-4 sm:h-4 object-contain shrink-0"
-      />
+        className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex items-center justify-center shrink-0"
+      >
+        {icon}
+      </motion.div>
       <span className="text-neutral-200 leading-none whitespace-nowrap font-mono text-xs sm:text-sm">
         {name}
       </span>

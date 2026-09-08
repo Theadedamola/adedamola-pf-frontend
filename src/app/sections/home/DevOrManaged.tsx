@@ -42,7 +42,7 @@ const itemVariants = {
 
 export default function DevOrManaged() {
   return (
-    <section className="py-24 px-6 md:px-12 max-w-7xl mx-auto bg-white">
+    <section className="py-24 px-6 md:px-12 max-w-7xl mx-auto bg-[#FAF8F5]">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

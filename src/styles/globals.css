@@ -37,7 +37,7 @@ body {
   margin: 0 auto;
   align-items: center;
   justify-content: center;
-  @apply text-gray-900 bg-white;
+  @apply text-neutral-900 bg-[#FAF8F5];
 }
 
 /* 3D Transform Utilities */

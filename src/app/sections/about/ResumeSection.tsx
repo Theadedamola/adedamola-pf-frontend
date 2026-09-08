@@ -7,11 +7,11 @@ const RESUME_URL =
   "https://drive.google.com/file/d/1Yu5HnRJZjcoUoajpEDGwWqP26y4irAjf/view?usp=sharing";
 
 const SOCIAL_LINKS = [
-  { label: "github", href: "https://github.com/adedamolaalausa" },
-  { label: "linkedin", href: "https://linkedin.com/in/adedamolaalausa" },
-  { label: "twitter / x", href: "https://x.com/theadedamola" },
+  { label: "github", href: "https://github.com/Theadedamola" },
+  { label: "linkedin", href: "https://www.linkedin.com/in/adedamola-alausa/" },
+  { label: "twitter / x", href: "https://x.com/Theadedamola_" },
   { label: "whatsapp", href: "https://wa.me/2347067276819" },
-  { label: "email", href: "mailto:adedamolaalausa04@gmail.com" },
+  { label: "email", href: "mailto:adedamolajose@gmail.com" },
 ];
 
 export default function ResumeSection() {

@@ -10,7 +10,7 @@ export default function Blogs() {
   const { data, isLoading, error } = useBlogs(page, 9);
 
   return (
-    <div className="min-h-screen bg-white text-neutral-900 transition-colors duration-500">
+    <div className="min-h-screen bg-[#FAF8F5] text-neutral-900 transition-colors duration-500">
       <SEO
         title="Blogs | Adedamola"
         description="Essays, engineering dispatches, and perspectives on design systems and frontend architecture by Adedamola."

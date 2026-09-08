@@ -5,7 +5,7 @@ import workWithMeImage from "@/assets/work-with-me.png";
 
 export default function ContactSection() {
   return (
-    <section className="py-24 md:py-36 px-6 md:px-12 bg-white border-t border-neutral-100 overflow-hidden">
+    <section className="py-24 md:py-36 px-6 md:px-12 bg-[#FAF8F5] border-t border-neutral-200/60 overflow-hidden">
       <div className="max-w-4xl mx-auto flex flex-col items-center justify-center text-center">
 
         {/* Centralized Headline with compact collage capsule spanning between text */}

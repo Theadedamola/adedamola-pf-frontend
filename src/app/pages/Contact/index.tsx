@@ -14,29 +14,29 @@ const CHANNELS = [
   },
   {
     name: "email",
-    label: "adedamolaalausa04@gmail.com",
-    href: "mailto:adedamolaalausa04@gmail.com",
+    label: "adedamolajose@gmail.com",
+    href: "mailto:adedamolajose@gmail.com",
   },
   {
     name: "linkedin",
-    label: "linkedin.com/in/adedamolaalausa",
-    href: "https://linkedin.com/in/adedamolaalausa",
+    label: "linkedin.com/in/adedamola-alausa",
+    href: "https://www.linkedin.com/in/adedamola-alausa/",
   },
   {
     name: "twitter / x",
-    label: "@theadedamola",
-    href: "https://x.com/theadedamola",
+    label: "@Theadedamola_",
+    href: "https://x.com/Theadedamola_",
   },
   {
     name: "github",
-    label: "github.com/adedamolaalausa",
-    href: "https://github.com/adedamolaalausa",
+    label: "github.com/Theadedamola",
+    href: "https://github.com/Theadedamola",
   },
 ];
 
 export default function Contact() {
   return (
-    <div className="min-h-screen bg-white text-neutral-900 pt-28 md:pt-36 pb-24 transition-colors duration-500">
+    <div className="min-h-screen bg-[#FAF8F5] text-neutral-900 pt-28 md:pt-36 pb-24 transition-colors duration-500">
       <SEO
         title="Contact | Adedamola"
         description="Get in touch with Adedamola for design engineering, design systems, and frontend architecture inquiries."
