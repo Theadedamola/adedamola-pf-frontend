@@ -63,11 +63,23 @@ export default function ImageLightbox({
             className="relative max-w-[92vw] max-h-[88vh] flex flex-col items-center"
             onClick={(e) => e.stopPropagation()}
           >
-            <img
-              src={imageSrc}
-              alt={imageAlt}
-              className="max-w-full max-h-[82vh] object-contain rounded-xl shadow-2xl ring-1 ring-white/10 cursor-default"
-            />
+            {imageSrc.endsWith('.mp4') || imageSrc.includes('.mp4') || imageSrc.includes('video') ? (
+              <video
+                src={imageSrc}
+                autoPlay
+                loop
+                muted
+                playsInline
+                controls
+                className="max-w-full max-h-[82vh] object-contain rounded-xl shadow-2xl ring-1 ring-white/10 cursor-default"
+              />
+            ) : (
+              <img
+                src={imageSrc}
+                alt={imageAlt}
+                className="max-w-full max-h-[82vh] object-contain rounded-xl shadow-2xl ring-1 ring-white/10 cursor-default"
+              />
+            )}
             {imageAlt && (
               <p className="mt-3 text-xs font-mono text-white/60 tracking-wider uppercase text-center">
                 {imageAlt}

@@ -1,71 +1,92 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { X, ZoomIn } from "lucide-react";
+import { X, ZoomIn, Sparkles } from "lucide-react";
 import SEO from "@/components/common/SEO";
 import ImageLightbox from "@/components/common/ImageLightbox";
 import { ScrambleText } from "@/components/common/ScrambleText";
 import { Button } from "@/components/common/Button";
 
-// Import exploration images
+// Import Video & Exploration Assets
+import fluidIslandVideo from "@/assets/explorations/fluid-island.mp4";
+import cardExplorationVideo from "@/assets/explorations/card-exploration.mp4";
+import dockExplorationVideo from "@/assets/explorations/dock-exploration.mp4";
 import exploration1 from "@/assets/explorations/Dashboard-finance.png";
-import exploration2 from "@/assets/explorations/Desktop - 1.png";
 import exploration3 from "@/assets/explorations/Orders-page.png";
 import exploration4 from "@/assets/explorations/Transfer-finance.png";
-import exploration5 from "@/assets/explorations/boost-product-page.png";
-import exploration6 from "@/assets/explorations/finance-dash.png";
 import exploration7 from "@/assets/explorations/mobile-component.png";
-import exploration8 from "@/assets/explorations/mobile-finance.png";
 import exploration9 from "@/assets/explorations/onboarding-exploration.png";
-import exploration10 from "@/assets/explorations/portfolio-hero.png";
 
-const EXPLORATIONS = [
+export interface ExplorationItem {
+  id: string;
+  title: string;
+  category: string;
+  detail: string;
+  src: string;
+  isVideo?: boolean;
+  isCoded?: boolean;
+  tags?: string[];
+}
+
+const EXPLORATIONS: ExplorationItem[] = [
   {
     id: "01",
+    title: "morphing fluid island",
+    category: "spatial ui & spring physics",
+    detail:
+      "a tactile pill component that fluidly morphs between a music player, live waveform, incoming call, timer, and biometric payment states with zero-jump layout transitions and svg gooey physics.",
+    src: fluidIslandVideo,
+    isVideo: true,
+    isCoded: true,
+    tags: ["framer motion", "spring physics", "morphing ui", "audio web api"],
+  },
+  {
+    id: "02",
+    title: "3d holographic titanium card",
+    category: "3d shaders & specular physics",
+    detail:
+      "hyper-realistic card interface with mouse-reactive specular sheen, dynamic gyroscopic tilt, iridescent holographic reflection, and interactive 3d flip with security cvc reveal.",
+    src: cardExplorationVideo,
+    isVideo: true,
+    isCoded: true,
+    tags: ["3d transforms", "lighting shaders", "gyro tilt", "physics"],
+  },
+  {
+    id: "03",
+    title: "magnetic fluid dock",
+    category: "spatial math & audio haptics",
+    detail:
+      "velocity-aware dock with cosine-based magnetic cursor attraction, spring-loaded launch physics, and zero-dependency browser-native web audio mechanical sound synthesis.",
+    src: dockExplorationVideo,
+    isVideo: true,
+    isCoded: true,
+    tags: ["spatial math", "velocity vector", "web audio api", "micro-interaction"],
+  },
+  {
+    id: "04",
     src: exploration1,
     title: "finance dashboard",
     category: "systems & data",
     detail:
       "a study in minimalist financial data visualization, emphasizing legible hierarchy, custom charting, and dense information layout.",
+    tags: ["fintech", "data visualization", "systems"],
   },
   {
-    id: "02",
-    src: exploration2,
-    title: "desktop workspace",
-    category: "operating system concept",
-    detail:
-      "conceptual desktop interface exploring layer depth, subtle translucent materials, and fluid multi-window spatial organization.",
-  },
-  {
-    id: "03",
+    id: "05",
     src: exploration3,
     title: "orders management",
     category: "e-commerce operations",
     detail:
       "streamlined bulk fulfillment interface focusing on live status telemetry, rapid batch workflows, and keyboard accessibility.",
+    tags: ["e-commerce", "b2b", "workflow"],
   },
   {
-    id: "04",
+    id: "06",
     src: exploration4,
     title: "transfer interface",
     category: "fintech interaction",
     detail:
       "clean, multi-step money transfer flow designed to eliminate cognitive friction and provide instantaneous confirmation feedback.",
-  },
-  {
-    id: "05",
-    src: exploration5,
-    title: "product storefront",
-    category: "editorial commerce",
-    detail:
-      "high-conversion product showcase combining high-resolution imagery, subtle typography, and obvious purchase pathways.",
-  },
-  {
-    id: "06",
-    src: exploration6,
-    title: "financial analytics",
-    category: "data visualization",
-    detail:
-      "complex portfolio metrics condensed into actionable trends through balanced chart proportions and high-contrast color stops.",
+    tags: ["fintech", "micro-interaction", "stepper"],
   },
   {
     id: "07",
@@ -74,37 +95,21 @@ const EXPLORATIONS = [
     category: "design system",
     detail:
       "a modular library of touch-first mobile component primitives calibrated for accessibility, thumb ergonomics, and haptic rhythm.",
+    tags: ["mobile", "design tokens", "component library"],
   },
   {
     id: "08",
-    src: exploration8,
-    title: "mobile banking app",
-    category: "mobile application",
-    detail:
-      "compact, high-velocity financial management experience designed for one-handed operation and immediate account overview.",
-  },
-  {
-    id: "09",
     src: exploration9,
     title: "onboarding sequence",
     category: "product activation",
     detail:
       "engagement-focused customer onboarding flow leveraging progressive disclosure and micro-interactions to guide user setup.",
-  },
-  {
-    id: "10",
-    src: exploration10,
-    title: "editorial portfolio hero",
-    category: "brand & typography",
-    detail:
-      "experimental landing experience testing typographic scale, kinetic typography, and non-traditional navigation anchors.",
+    tags: ["growth", "activation", "onboarding"],
   },
 ];
 
 export default function Explorations() {
-  const [selectedItem, setSelectedItem] = useState<
-    (typeof EXPLORATIONS)[0] | null
-  >(null);
+  const [selectedItem, setSelectedItem] = useState<ExplorationItem | null>(null);
 
   // Fullscreen Lightbox state
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -113,7 +118,7 @@ export default function Explorations() {
     <div className="min-h-screen bg-[#FAF8F5] text-neutral-900 transition-colors duration-500">
       <SEO
         title="Explorations | Adedamola"
-        description="A curation of visual studies, concept designs, and UI experiments by Adedamola."
+        description="A curation of visual studies, coded prototypes, and design engineering experiments by Adedamola."
       />
 
       {/* Header Info */}
@@ -124,6 +129,11 @@ export default function Explorations() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="max-w-3xl"
         >
+          <div className="flex items-center gap-2 mb-3">
+            <span className="text-xs font-mono tracking-widest text-amber-600 uppercase">
+              archive &middot; design engineering
+            </span>
+          </div>
 
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-normal leading-[1.15] tracking-tight text-neutral-900 mb-4">
             <span className="font-heading">
@@ -131,12 +141,12 @@ export default function Explorations() {
             </span>
           </h1>
           <p className="text-base sm:text-lg text-neutral-600 font-normal leading-relaxed">
-            an archive of concept prototypes, design tokens, and visual experiments developed in the margins of production work.
+            an archive of coded prototypes, tactile physics, and visual experiments developed in the margins of production work.
           </p>
 
-          <div className="mt-5 flex items-center gap-2 text-xs font-mono text-neutral-400">
-            <span className="px-2.5 py-0.5 rounded-full bg-neutral-100 border border-neutral-200/80 text-neutral-700">
-              {EXPLORATIONS.length} visual studies archived
+          <div className="mt-5 flex flex-wrap items-center gap-3 text-xs font-mono text-neutral-400">
+            <span className="px-2.5 py-1 rounded-full bg-neutral-100 border border-neutral-200/80 text-neutral-700">
+              {EXPLORATIONS.length} studies archived
             </span>
           </div>
         </motion.div>
@@ -153,21 +163,40 @@ export default function Explorations() {
           {EXPLORATIONS.map((item) => (
             <motion.div
               key={item.id}
-              whileHover={{ y: -3 }}
+              whileHover={{ y: -4 }}
               transition={{ duration: 0.2 }}
-              className="group relative rounded-2xl border border-neutral-200/80 hover:border-neutral-400/90 bg-neutral-50/60 p-2 sm:p-2.5 transition-all duration-500 cursor-pointer"
+              className="group relative rounded-2xl border border-neutral-200/80 hover:border-neutral-400/90 bg-white p-2.5 sm:p-3 transition-all duration-500 cursor-pointer shadow-xs hover:shadow-md"
               onClick={() => setSelectedItem(item)}
             >
-              {/* Image Frame */}
-              <div className="relative overflow-hidden rounded-xl aspect-square w-full bg-neutral-100">
-                <img
-                  src={item.src}
-                  alt={item.title}
-                  className="w-full h-full object-cover transform transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-                />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 flex items-center justify-center">
+              {/* Media Frame */}
+              <div className="relative overflow-hidden rounded-xl aspect-square w-full bg-neutral-100 flex items-center justify-center">
+                {item.isVideo ? (
+                  <>
+                    <video
+                      src={item.src}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="w-full h-full object-cover transform transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                    />
+                    <div className="absolute top-3 right-3 z-10 flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-neutral-950/80 backdrop-blur-md text-white text-[10px] font-mono border border-white/10 shadow-xs">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                      <span>coded lab</span>
+                    </div>
+                  </>
+                ) : (
+                  <img
+                    src={item.src}
+                    alt={item.title}
+                    className="w-full h-full object-cover transform transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                  />
+                )}
+
+                {/* Hover overlay hint */}
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 flex items-center justify-center pointer-events-none">
                   <div className="opacity-0 group-hover:opacity-100 transition-opacity p-3 bg-white/95 text-neutral-900 rounded-full shadow-lg">
-                    <ZoomIn size={18} />
+                    {item.isVideo ? <Sparkles size={18} /> : <ZoomIn size={18} />}
                   </div>
                 </div>
               </div>
@@ -196,7 +225,7 @@ export default function Explorations() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-neutral-950/70 backdrop-blur-md p-4 sm:p-6 md:p-10"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-neutral-950/75 backdrop-blur-md p-4 sm:p-6 md:p-10"
             onClick={() => setSelectedItem(null)}
           >
             {/* Dismiss Button */}
@@ -214,31 +243,55 @@ export default function Explorations() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
               transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="w-full max-w-5xl max-h-[90vh] overflow-y-auto bg-white rounded-3xl border border-neutral-200/90 shadow-2xl relative"
+              className="w-full max-w-5xl max-h-[92vh] overflow-y-auto bg-white rounded-3xl border border-neutral-200/90 shadow-2xl relative"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
-                {/* Left: Image Canvas */}
+                {/* Left: Canvas Area */}
                 <div className="lg:col-span-7 p-5 sm:p-8 bg-neutral-50 flex flex-col items-center justify-center border-b lg:border-b-0 lg:border-r border-neutral-200/80">
-                  <div
-                    className="w-full relative group cursor-zoom-in rounded-2xl overflow-hidden border border-neutral-200/80 bg-white shadow-xs"
-                    onClick={() => setLightboxOpen(true)}
-                  >
-                    <img
-                      src={selectedItem.src}
-                      alt={selectedItem.title}
-                      className="w-full h-auto max-h-[65vh] object-contain mx-auto"
-                    />
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 flex items-center justify-center">
-                      <div className="opacity-0 group-hover:opacity-100 transition-opacity bg-white/95 px-4 py-2 rounded-full shadow-lg flex items-center gap-2 text-xs font-mono text-neutral-800">
-                        <ZoomIn size={14} />
-                        <span>expand fullscreen</span>
+                  {selectedItem.isVideo ? (
+                    <div className="w-full flex flex-col items-center">
+                      <div
+                        className="w-full relative group cursor-zoom-in rounded-2xl overflow-hidden border border-neutral-200/80 bg-neutral-950 shadow-xs"
+                        onClick={() => setLightboxOpen(true)}
+                      >
+                        <video
+                          src={selectedItem.src}
+                          autoPlay
+                          loop
+                          muted
+                          playsInline
+                          controls
+                          className="w-full h-auto max-h-[65vh] object-contain mx-auto"
+                        />
+                      </div>
+                      <div className="mt-3 text-[11px] font-mono text-neutral-400 text-center">
+                        60fps coded prototype &middot; click to expand fullscreen
                       </div>
                     </div>
-                  </div>
-                  <div className="mt-3 text-[11px] font-mono text-neutral-400 text-center">
-                    click image to view high-res fullscreen
-                  </div>
+                  ) : (
+                    <div className="w-full flex flex-col items-center">
+                      <div
+                        className="w-full relative group cursor-zoom-in rounded-2xl overflow-hidden border border-neutral-200/80 bg-white shadow-xs"
+                        onClick={() => setLightboxOpen(true)}
+                      >
+                        <img
+                          src={selectedItem.src}
+                          alt={selectedItem.title}
+                          className="w-full h-auto max-h-[65vh] object-contain mx-auto"
+                        />
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 flex items-center justify-center">
+                          <div className="opacity-0 group-hover:opacity-100 transition-opacity bg-white/95 px-4 py-2 rounded-full shadow-lg flex items-center gap-2 text-xs font-mono text-neutral-800">
+                            <ZoomIn size={14} />
+                            <span>expand fullscreen</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="mt-3 text-[11px] font-mono text-neutral-400 text-center">
+                        click image to view high-res fullscreen
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 {/* Right: Editorial Details */}
@@ -262,33 +315,41 @@ export default function Explorations() {
 
                     <div className="pt-6 border-t border-neutral-100 space-y-3">
                       <span className="text-xs font-mono text-neutral-400 uppercase tracking-wider block">
-                        classification
+                        classification & tech
                       </span>
                       <div className="flex flex-wrap gap-2">
-                        <span className="px-3 py-1 bg-neutral-100 border border-neutral-200/60 rounded-full text-xs font-mono text-neutral-700 lowercase">
-                          visual study
-                        </span>
-                        <span className="px-3 py-1 bg-neutral-100 border border-neutral-200/60 rounded-full text-xs font-mono text-neutral-700 lowercase">
-                          ui architecture
-                        </span>
-                        <span className="px-3 py-1 bg-neutral-100 border border-neutral-200/60 rounded-full text-xs font-mono text-neutral-700 lowercase">
-                          exploration
-                        </span>
+                        {selectedItem.isCoded && (
+                          <span className="px-3 py-1 bg-amber-50 border border-amber-200 text-amber-900 rounded-full text-xs font-mono lowercase flex items-center gap-1 font-semibold">
+                            <Sparkles className="w-3 h-3 text-amber-600" />
+                            <span>coded proof of work</span>
+                          </span>
+                        )}
+                        {(selectedItem.tags || ["visual study", "ui architecture", "exploration"]).map((tag) => (
+                          <span
+                            key={tag}
+                            className="px-3 py-1 bg-neutral-100 border border-neutral-200/60 rounded-full text-xs font-mono text-neutral-700 lowercase"
+                          >
+                            {tag}
+                          </span>
+                        ))}
                       </div>
                     </div>
                   </div>
 
                   {/* Actions */}
-                  <div className="pt-8 mt-6 border-t border-neutral-100 flex items-center gap-3">
-                    <Button
-                      variant="primary"
-                      size="sm"
-                      onClick={() => setLightboxOpen(true)}
-                      className="rounded-full px-5 py-2.5 text-xs font-mono flex items-center gap-2"
-                    >
-                      <span>fullscreen view</span>
-                      <ZoomIn size={14} />
-                    </Button>
+                  <div className="pt-8 mt-6 border-t border-neutral-100 flex flex-wrap items-center gap-3">
+                    {selectedItem.src && (
+                      <Button
+                        variant="primary"
+                        size="sm"
+                        onClick={() => setLightboxOpen(true)}
+                        className="rounded-full px-5 py-2.5 text-xs font-mono flex items-center gap-2"
+                      >
+                        <span>fullscreen view</span>
+                        <ZoomIn size={14} />
+                      </Button>
+                    )}
+
                     <button
                       onClick={() => setSelectedItem(null)}
                       className="px-5 py-2.5 rounded-full border border-neutral-200 text-xs font-mono text-neutral-600 hover:text-black hover:border-neutral-400 transition-colors cursor-pointer"

@@ -25,6 +25,13 @@ import CreateBlog from "../admin/Blogs/CreateBlog";
 import EditBlog from "../admin/Blogs/EditBlog";
 import AdminMedia from "../admin/Media";
 
+// Lab / Experiments (Zero navbar/footer sandbox)
+import LabLayout from "../lab/LabLayout";
+import LabIndex from "../lab";
+import FluidIslandShot from "../lab/shots/FluidIslandShot";
+import HolographicCardShot from "../lab/shots/HolographicCardShot";
+import MagneticDockShot from "../lab/shots/MagneticDockShot";
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -38,6 +45,16 @@ export const router = createBrowserRouter([
       { path: "about", element: <About /> },
       { path: "explorations", element: <Explorations /> },
       { path: "contact", element: <Contact /> },
+    ],
+  },
+  {
+    path: "/lab",
+    element: <LabLayout />,
+    children: [
+      { index: true, element: <LabIndex /> },
+      { path: "fluid-island", element: <FluidIslandShot /> },
+      { path: "holographic-card", element: <HolographicCardShot /> },
+      { path: "magnetic-dock", element: <MagneticDockShot /> },
     ],
   },
   {
