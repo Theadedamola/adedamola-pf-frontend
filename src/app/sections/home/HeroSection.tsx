@@ -42,11 +42,11 @@ export default function HeroSection() {
               className="mt-6 flex flex-col items-center text-center"
             >
               <div className="flex items-center justify-center gap-3 sm:gap-4">
-                <span className="w-6 sm:w-10 h-[1px] bg-neutral-700/80" />
+                <span className="w-6 sm:w-10 h-px bg-neutral-700/80" />
                 <h2 className="text-xs sm:text-sm md:text-base font-mono uppercase tracking-[0.28em] text-neutral-300 font-medium">
                   <ScrambleText text="Design Engineer" delay={0.1} />
                 </h2>
-                <span className="w-6 sm:w-10 h-[1px] bg-neutral-700/80" />
+                <span className="w-6 sm:w-10 h-px bg-neutral-700/80" />
               </div>
               <p className="mt-2 text-xs sm:text-sm font-mono text-neutral-500 tracking-wider text-center max-w-md">
                 crafting clarity from chaos through intuitive design & code
@@ -96,6 +96,7 @@ export default function HeroSection() {
             <ExperiencePill
               name="reycasa"
               iconBg="bg-indigo-600"
+              href="https://reycasatech.com"
             />{" "}
             and led end-to-end product design at{" "}
             <ExperiencePill

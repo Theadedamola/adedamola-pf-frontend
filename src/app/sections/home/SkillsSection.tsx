@@ -201,8 +201,8 @@ export default function SkillsSection() {
       />
 
       {/* Top & Bottom Cinematic Fade Vignettes */}
-      <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black to-transparent pointer-events-none z-10" />
-      <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black to-transparent pointer-events-none z-10" />
+      <div className="absolute inset-x-0 top-0 h-28 bg-linear-to-b from-black to-transparent pointer-events-none z-10" />
+      <div className="absolute inset-x-0 bottom-0 h-28 bg-linear-to-t from-black to-transparent pointer-events-none z-10" />
 
       <div className="relative z-10 max-w-4xl mx-auto">
         {/* Section Header */}
@@ -309,7 +309,7 @@ function ScrollToolPill({
   return (
     <motion.span
       style={{ opacity, scale, borderColor }}
-      className="inline-flex items-center gap-1.5 px-2.5 py-0.5 mx-1 rounded-full bg-neutral-900/90 border text-neutral-200 font-medium text-[0.72em] align-baseline -translate-y-[2px] transition-all select-none shadow-xs"
+      className="inline-flex items-center gap-1.5 pl-2 pr-2.5 py-2 mx-1 rounded-full bg-neutral-900/90 border text-neutral-200 font-medium text-[0.72em] align-baseline -translate-y-0.5 transition-all select-none shadow-xs"
     >
       <motion.div
         style={{ filter: useTransform(grayscale, (v) => `grayscale(${v * 100}%)`) }}

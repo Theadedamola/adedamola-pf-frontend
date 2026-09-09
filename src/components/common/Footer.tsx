@@ -79,7 +79,7 @@ export default function Footer() {
     });
 
     // 2. Stickers
-    const stickerRotations = [-6, 8, -12, 10, -5];
+    const stickerRotations = [-6, 8, -12, 10, -5, 12];
     stickerRefs.current.forEach((el, i) => {
       if (!el) return;
       const rect = el.getBoundingClientRect();
@@ -382,7 +382,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Sticker 3: Cute Blue Waving Cloud (Bottom Left) */}
+        {/* Sticker 3: Football / Soccer (Bottom Left) */}
         <div
           ref={(el) => {
             stickerRefs.current[2] = el;
@@ -392,25 +392,24 @@ export default function Footer() {
           }`}
           style={{ transition: "opacity 0.4s" }}
         >
-          <div className="p-1 bg-white rounded-2xl shadow-md border border-neutral-200/90 w-16 sm:w-20">
-            <svg viewBox="0 0 80 60" fill="none" className="w-full h-auto">
-              <path
-                d="M20 48h40a16 16 0 005-31.2 20 20 0 00-38.4-4A15 15 0 0020 48z"
-                fill="#38BDF8"
-              />
-              {/* Eyes & Smile */}
-              <circle cx="34" cy="34" r="2.5" fill="#0F172A" />
-              <circle cx="46" cy="34" r="2.5" fill="#0F172A" />
-              <path
-                d="M37 40 Q40 44 43 40"
-                stroke="#0F172A"
-                strokeWidth="2"
-                strokeLinecap="round"
-                fill="none"
-              />
-              {/* Rosy cheeks */}
-              <circle cx="28" cy="38" r="3" fill="#FDA4AF" opacity="0.8" />
-              <circle cx="52" cy="38" r="3" fill="#FDA4AF" opacity="0.8" />
+          <div className="p-1.5 bg-white rounded-2xl shadow-md border border-neutral-200/90 w-16 sm:w-20">
+            <svg viewBox="0 0 80 80" fill="none" className="w-full h-auto">
+              {/* Ball base */}
+              <circle cx="40" cy="40" r="34" fill="#F8FAFC" stroke="#0F172A" strokeWidth="2.5" />
+              {/* Center pentagon */}
+              <polygon points="40,28 49,35 46,45 34,45 31,35" fill="#0F172A" />
+              {/* Seam lines to outer edges */}
+              <line x1="40" y1="28" x2="40" y2="16" stroke="#0F172A" strokeWidth="2" strokeLinecap="round" />
+              <line x1="49" y1="35" x2="60" y2="31" stroke="#0F172A" strokeWidth="2" strokeLinecap="round" />
+              <line x1="46" y1="45" x2="55" y2="56" stroke="#0F172A" strokeWidth="2" strokeLinecap="round" />
+              <line x1="34" y1="45" x2="25" y2="56" stroke="#0F172A" strokeWidth="2" strokeLinecap="round" />
+              <line x1="31" y1="35" x2="20" y2="31" stroke="#0F172A" strokeWidth="2" strokeLinecap="round" />
+              {/* Outer edge patches */}
+              <polygon points="34,8 46,8 43,16 37,16" fill="#0F172A" />
+              <polygon points="68,26 73,36 65,39 60,31" fill="#0F172A" />
+              <polygon points="60,63 68,54 60,50 55,56" fill="#0F172A" />
+              <polygon points="20,63 12,54 20,50 25,56" fill="#0F172A" />
+              <polygon points="12,26 7,36 15,39 20,31" fill="#0F172A" />
             </svg>
           </div>
         </div>
@@ -462,6 +461,52 @@ export default function Footer() {
               <circle cx="40" cy="36" r="16" fill="#1E293B" stroke="#CBD5E1" strokeWidth="3" />
               <circle cx="40" cy="36" r="10" fill="#0F172A" />
               <circle cx="36" cy="32" r="3" fill="#FFFFFF" opacity="0.8" />
+            </svg>
+          </div>
+        </div>
+
+        {/* Sticker 6: Vintage Golden Saxophone (Bottom Center-Left) */}
+        <div
+          ref={(el) => {
+            stickerRefs.current[5] = el;
+          }}
+          className={`absolute bottom-6 left-1/3 sm:bottom-8 sm:left-[40%] z-20 will-change-transform ${
+            ready ? "" : "opacity-0"
+          }`}
+          style={{ transition: "opacity 0.4s" }}
+        >
+          <div className="p-1.5 bg-white rounded-2xl shadow-md border border-neutral-200/90 w-16 sm:w-20">
+            <svg viewBox="0 0 80 80" fill="none" className="w-full h-auto">
+              {/* Saxophone neck & curved body */}
+              <path
+                d="M30 14 Q40 14 38 24 L36 44 Q34 60 46 62 Q58 64 60 50 L60 40"
+                stroke="#D97706"
+                strokeWidth="7"
+                strokeLinecap="round"
+                fill="none"
+              />
+              <path
+                d="M30 14 Q40 14 38 24 L36 44 Q34 60 46 62 Q58 64 60 50 L60 40"
+                stroke="#FBBF24"
+                strokeWidth="4"
+                strokeLinecap="round"
+                fill="none"
+              />
+              {/* Mouthpiece */}
+              <rect x="22" y="12" width="9" height="4" rx="1.5" fill="#1F2937" />
+              {/* Flared Bell */}
+              <ellipse cx="60" cy="38" rx="9" ry="6" fill="#D97706" stroke="#B45309" strokeWidth="1" />
+              <ellipse cx="60" cy="38" rx="7" ry="4.5" fill="#FDE68A" />
+              <ellipse cx="60" cy="38" rx="4" ry="2.5" fill="#78350F" />
+              {/* Keys / Pearls along the body */}
+              <circle cx="37" cy="30" r="1.8" fill="#FEF3C7" stroke="#92400E" strokeWidth="1" />
+              <circle cx="36" cy="36" r="1.8" fill="#FEF3C7" stroke="#92400E" strokeWidth="1" />
+              <circle cx="35" cy="42" r="1.8" fill="#FEF3C7" stroke="#92400E" strokeWidth="1" />
+              <circle cx="37" cy="48" r="1.8" fill="#FEF3C7" stroke="#92400E" strokeWidth="1" />
+              {/* Floating Music Note */}
+              <path d="M18 30 L18 23 L24 21 L24 28 M18 25 L24 23" stroke="#8B5CF6" strokeWidth="1.5" strokeLinecap="round" />
+              <circle cx="17" cy="30" r="2" fill="#8B5CF6" />
+              <circle cx="23" cy="28" r="2" fill="#8B5CF6" />
             </svg>
           </div>
         </div>

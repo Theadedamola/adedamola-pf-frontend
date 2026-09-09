@@ -2,19 +2,25 @@ import { motion } from "framer-motion";
 
 const projects = [
   {
-    name: "Zmarket",
+    name: "zmarket",
     role: "Design Engineer",
     description: "Digital marketplace platform",
     link: "https://zmarket.ng",
   },
   {
-    name: "Vociara",
+    name: "reycasa",
+    role: "Design Engineer",
+    description: "Technology company",
+    link: "https://reycasatech.com",
+  },
+  {
+    name: "vociara",
     role: "Design Engineer & Creator",
-    description: "AI voice synthesis",
+    description: "AI voice journal",
     link: "https://vociara.com",
   },
   {
-    name: "Nagida Foods",
+    name: "nagida foods",
     role: "Product Designer",
     description: "Food delivery & logistics",
     link: "https://nagidafoods.com",
