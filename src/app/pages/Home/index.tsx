@@ -1,5 +1,6 @@
 import HeroSection from '@/app/sections/home/HeroSection';
 import SelectedWorks from '@/app/sections/home/SelectedWorks';
+import ExplorationsReel from '@/app/sections/home/ExplorationsReel';
 import DevOrManaged from '@/app/sections/home/DevOrManaged';
 import SkillsSection from '@/app/sections/home/SkillsSection';
 import GithubActivitySection from '@/app/sections/home/GithubActivitySection';
@@ -13,6 +14,7 @@ export default function Home() {
       <SEO />
       <HeroSection />
       <SelectedWorks />
+      <ExplorationsReel />
       <DevOrManaged />
       <SkillsSection />
       <GithubActivitySection />
