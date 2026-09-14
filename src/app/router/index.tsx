@@ -31,6 +31,7 @@ import LabIndex from "../lab";
 import FluidIslandShot from "../lab/shots/FluidIslandShot";
 import HolographicCardShot from "../lab/shots/HolographicCardShot";
 import MagneticDockShot from "../lab/shots/MagneticDockShot";
+import StoreErpSidebarShot from "../lab/shots/StoreErpSidebarShot";
 
 export const router = createBrowserRouter([
   {
@@ -55,6 +56,8 @@ export const router = createBrowserRouter([
       { path: "fluid-island", element: <FluidIslandShot /> },
       { path: "holographic-card", element: <HolographicCardShot /> },
       { path: "magnetic-dock", element: <MagneticDockShot /> },
+      { path: "store-erp", element: <StoreErpSidebarShot /> },
+      { path: "complex-sidebar", element: <StoreErpSidebarShot /> },
     ],
   },
   {

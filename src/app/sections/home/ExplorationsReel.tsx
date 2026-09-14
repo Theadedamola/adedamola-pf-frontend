@@ -1,12 +1,14 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ArrowLeft, ArrowRight } from "lucide-react";
+import { useRef, useState, useEffect } from "react";
 import { ScrambleText } from "@/components/common/ScrambleText";
 
 // Coded Video Assets
 import fluidIslandVideo from "@/assets/explorations/fluid-island.mp4";
 import cardExplorationVideo from "@/assets/explorations/card-exploration.mp4";
 import dockExplorationVideo from "@/assets/explorations/dock-exploration.mp4";
+import sidebarExplorationVideo from "@/assets/explorations/sidebar-exploration.mp4";
 
 const REEL_ITEMS = [
   {
@@ -24,11 +26,51 @@ const REEL_ITEMS = [
     title: "magnetic fluid dock",
     video: dockExplorationVideo,
   },
+  {
+    id: "04",
+    title: "adaptive spatial erp sidebar",
+    video: sidebarExplorationVideo,
+  },
 ];
 
 export default function ExplorationsReel() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const checkScroll = () => {
+    if (scrollRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+      setCanScrollLeft(scrollLeft > 15);
+      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 15);
+    }
+  };
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    checkScroll();
+    el.addEventListener("scroll", checkScroll, { passive: true });
+    window.addEventListener("resize", checkScroll);
+    return () => {
+      el.removeEventListener("scroll", checkScroll);
+      window.removeEventListener("resize", checkScroll);
+    };
+  }, []);
+
+  const scroll = (direction: "left" | "right") => {
+    if (scrollRef.current) {
+      const firstCard = scrollRef.current.firstElementChild as HTMLElement | null;
+      const scrollAmount = firstCard ? firstCard.clientWidth + 32 : 520;
+      scrollRef.current.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
-    <section className="py-20 md:py-28 px-6 md:px-12 max-w-7xl mx-auto border-t border-neutral-200/70">
+    <section className="py-20 md:py-28 px-6 md:px-12 max-w-7xl mx-auto border-t border-neutral-200/70 overflow-hidden">
       {/* Header & Narrative */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -57,8 +99,28 @@ export default function ExplorationsReel() {
           </p>
         </div>
 
-        {/* Right Header Link */}
+        {/* Right Header Controls */}
         <div className="flex items-center gap-3 self-start lg:self-end">
+          {/* Scroll Nav Buttons */}
+          <div className="flex items-center gap-2 mr-1">
+            <button
+              onClick={() => scroll("left")}
+              disabled={!canScrollLeft}
+              aria-label="Scroll left"
+              className="p-2.5 rounded-full border border-neutral-200 bg-white hover:bg-neutral-100 disabled:opacity-30 disabled:cursor-not-allowed transition-all text-neutral-800 shadow-2xs cursor-pointer"
+            >
+              <ArrowLeft className="w-4 h-4" />
+            </button>
+            <button
+              onClick={() => scroll("right")}
+              disabled={!canScrollRight}
+              aria-label="Scroll right"
+              className="p-2.5 rounded-full border border-neutral-200 bg-white hover:bg-neutral-100 disabled:opacity-30 disabled:cursor-not-allowed transition-all text-neutral-800 shadow-2xs cursor-pointer"
+            >
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+
           <Link
             to="/explorations"
             className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-neutral-950 text-white text-xs font-mono hover:bg-neutral-800 transition-all shadow-xs"
@@ -69,8 +131,11 @@ export default function ExplorationsReel() {
         </div>
       </motion.div>
 
-      {/* 3 Full-Card Videos */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+      {/* Horizontal Scroll Full-Card Video Reel */}
+      <div
+        ref={scrollRef}
+        className="flex items-center gap-6 md:gap-8 overflow-x-auto scroll-smooth snap-x snap-mandatory py-4 -my-4 px-6 md:px-12 -mx-6 md:-mx-12 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+      >
         {REEL_ITEMS.map((item, index) => (
           <motion.div
             key={item.id}
@@ -79,6 +144,7 @@ export default function ExplorationsReel() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
             whileHover={{ y: -6 }}
+            className="w-[84vw] sm:w-[440px] md:w-[500px] lg:w-[540px] shrink-0 snap-start"
           >
             <Link
               to="/explorations"

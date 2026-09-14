@@ -10,6 +10,7 @@ import { Button } from "@/components/common/Button";
 import fluidIslandVideo from "@/assets/explorations/fluid-island.mp4";
 import cardExplorationVideo from "@/assets/explorations/card-exploration.mp4";
 import dockExplorationVideo from "@/assets/explorations/dock-exploration.mp4";
+import sidebarExplorationVideo from "@/assets/explorations/sidebar-exploration.mp4";
 import exploration1 from "@/assets/explorations/Dashboard-finance.png";
 import exploration3 from "@/assets/explorations/Orders-page.png";
 import exploration4 from "@/assets/explorations/Transfer-finance.png";
@@ -63,6 +64,17 @@ const EXPLORATIONS: ExplorationItem[] = [
   },
   {
     id: "04",
+    title: "adaptive spatial erp sidebar",
+    category: "information architecture & tree svg",
+    detail:
+      "a multi-state commerce sidebar for multi-store retail operations featuring squiggly svg tree connectors, instant icon-only collapse, multi-store switcher, and 100% synchronized theme engine.",
+    src: sidebarExplorationVideo,
+    isVideo: true,
+    isCoded: true,
+    tags: ["multi-store erp", "svg squiggly lines", "tree hierarchy", "theme engine"],
+  },
+  {
+    id: "05",
     src: exploration1,
     title: "finance dashboard",
     category: "systems & data",
@@ -71,7 +83,7 @@ const EXPLORATIONS: ExplorationItem[] = [
     tags: ["fintech", "data visualization", "systems"],
   },
   {
-    id: "05",
+    id: "06",
     src: exploration3,
     title: "orders management",
     category: "e-commerce operations",
@@ -80,7 +92,7 @@ const EXPLORATIONS: ExplorationItem[] = [
     tags: ["e-commerce", "b2b", "workflow"],
   },
   {
-    id: "06",
+    id: "07",
     src: exploration4,
     title: "transfer interface",
     category: "fintech interaction",
@@ -89,7 +101,7 @@ const EXPLORATIONS: ExplorationItem[] = [
     tags: ["fintech", "micro-interaction", "stepper"],
   },
   {
-    id: "07",
+    id: "08",
     src: exploration7,
     title: "mobile design tokens",
     category: "design system",
@@ -98,7 +110,7 @@ const EXPLORATIONS: ExplorationItem[] = [
     tags: ["mobile", "design tokens", "component library"],
   },
   {
-    id: "08",
+    id: "09",
     src: exploration9,
     title: "onboarding sequence",
     category: "product activation",

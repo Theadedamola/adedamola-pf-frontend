@@ -8,6 +8,7 @@ export default function LabLayout() {
   const [aspectFrame, setAspectFrame] = useState<"fullscreen" | "dribbble" | "twitter">("fullscreen");
   const location = useLocation();
   const isLabIndex = location.pathname === "/lab";
+  const isStoreErp = location.pathname.includes("store-erp") || location.pathname.includes("complex-sidebar");
 
   const bgClasses = {
     creme: "bg-[#FAF8F5] text-neutral-900",
@@ -23,10 +24,10 @@ export default function LabLayout() {
   };
 
   return (
-    <div className={`min-h-screen w-full select-none transition-colors duration-300 relative flex flex-col items-center justify-center ${bgClasses[canvasBg]}`}>
+    <div className={`min-h-screen w-full select-none transition-colors duration-300 relative flex flex-col items-center justify-center ${isStoreErp ? "h-screen overflow-hidden" : ""} ${bgClasses[canvasBg]}`}>
       {/* Recording HUD / Sandbox Controls (Discreetly Floating, can be hidden for clean screen recording) */}
       <div
-        className={`fixed top-4 inset-x-0 z-50 flex justify-center pointer-events-none transition-opacity duration-300 ${
+        className={`fixed ${isStoreErp ? "bottom-4 right-4" : "top-4 inset-x-0"} z-50 flex justify-center pointer-events-none transition-opacity duration-300 ${
           isRecordingMode ? "opacity-0 hover:opacity-100" : "opacity-100"
         }`}
       >

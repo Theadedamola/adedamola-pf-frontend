@@ -44,6 +44,16 @@ export const SHOTS_CATALOG: ShotMeta[] = [
     path: "/lab/magnetic-dock",
     icon: Compass,
   },
+  {
+    id: "store-erp-sidebar",
+    title: "Store ERP · Adaptive Spatial Sidebar",
+    category: "Information Architecture & Tree SVG",
+    description: "Multi-state commerce sidebar with multi-store switcher, squiggly/curved SVG tree connectors, instant icon-only flyout menus, and 3-mode theme engine.",
+    tags: ["Multi-Store ERP", "SVG Squiggly Lines", "Tree Hierarchy", "Theme Engine"],
+    difficulty: "Top 1%",
+    path: "/lab/store-erp",
+    icon: Layers,
+  },
 ];
 
 export default function LabIndex() {
