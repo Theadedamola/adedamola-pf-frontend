@@ -128,13 +128,17 @@ const NAV_ITEMS: (
   { type: "item", id: "customize", label: "Customize", icon: Sliders },
 ];
 
+import AddShopModal, { type NewStoreData } from "./AddShopModal";
+
 export default function StoreErpSidebarShot() {
   const [theme, setTheme] = useState<ThemeMode>("light");
   const [sidebarState, setSidebarState] = useState<SidebarState>("expanded");
   const [lineStyle, setLineStyle] = useState<LineStyle>("squiggly");
   const [activeItem, setActiveItem] = useState("analytics");
+  const [stores, setStores] = useState<Store[]>(STORES);
   const [activeStore, setActiveStore] = useState<Store>(STORES[0]);
   const [storeModalOpen, setStoreModalOpen] = useState(false);
+  const [addShopModalOpen, setAddShopModalOpen] = useState(false);
   const [storeSearch, setStoreSearch] = useState("");
   const [expandedGroups, setExpandedGroups] = useState<Record<string, boolean>>({
     posts: true,
@@ -152,17 +156,26 @@ export default function StoreErpSidebarShot() {
     }));
   };
 
-  const filteredStores = STORES.filter(
+  const filteredStores = stores.filter(
     (s) =>
       s.name.toLowerCase().includes(storeSearch.toLowerCase()) ||
       s.location.toLowerCase().includes(storeSearch.toLowerCase())
   );
+
+  const handleStoreCreated = (newStore: NewStoreData) => {
+    setStores((prev) => [newStore, ...prev]);
+    setActiveStore(newStore);
+  };
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "b") {
         e.preventDefault();
         setSidebarState((prev) => (prev === "expanded" ? "collapsed" : "expanded"));
+      }
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "n") {
+        e.preventDefault();
+        setAddShopModalOpen(true);
       }
     };
     window.addEventListener("keydown", handleKeyDown);
@@ -171,12 +184,19 @@ export default function StoreErpSidebarShot() {
 
   return (
     <div
+      style={{ colorScheme: isDark ? "dark" : "light" }}
       className={`w-full h-screen overflow-hidden flex flex-col font-sans transition-colors duration-300 ${
-        isDark ? "bg-[#141518]" : "bg-[#ECECEE]"
+        isDark ? "dark bg-[#141518] text-white" : "bg-[#ECECEE] text-neutral-900"
       }`}
     >
       {/* Top Floating Workbench Controls */}
-      <div className="h-12 px-6 border-b flex items-center justify-between shrink-0 select-none z-30 transition-colors duration-300 backdrop-blur-md bg-black/5 dark:bg-black/20 border-black/5 dark:border-white/10">
+      <div
+        className={`h-12 px-6 border-b flex items-center justify-between shrink-0 select-none z-30 transition-colors duration-300 backdrop-blur-md ${
+          isDark
+            ? "border-white/10 bg-black/40 text-white"
+            : "border-black/10 bg-black/5 text-neutral-900"
+        }`}
+      >
         <div className="flex items-center gap-3">
           <span className={`text-xs font-mono font-semibold tracking-wider uppercase ${isDark ? "text-white" : "text-neutral-900"}`}>
             Store ERP &middot; Spatial Sidebar
@@ -260,6 +280,19 @@ export default function StoreErpSidebarShot() {
               Dark
             </button>
           </div>
+
+          {/* Quick Add Shop Trigger */}
+          <button
+            onClick={() => setAddShopModalOpen(true)}
+            className={`px-3 py-1 rounded-full text-xs font-mono border transition-all cursor-pointer flex items-center gap-1.5 ${
+              isDark
+                ? "bg-amber-400 text-neutral-950 border-amber-300 hover:bg-amber-300 font-semibold shadow-xs"
+                : "bg-neutral-950 text-white border-neutral-950 hover:bg-neutral-800 font-medium shadow-xs"
+            }`}
+          >
+            <Plus className="w-3 h-3" />
+            <span>Add Shop</span>
+          </button>
         </div>
       </div>
 
@@ -375,7 +408,7 @@ export default function StoreErpSidebarShot() {
                           }`}
                         >
                           <div className="px-2 py-1 flex items-center justify-between text-[10px] font-mono uppercase tracking-wider text-neutral-400 mb-1">
-                            <span>Your Stores ({STORES.length})</span>
+                            <span>Your Stores ({stores.length})</span>
                           </div>
 
                           <div className="relative mb-2 px-1">
@@ -393,7 +426,7 @@ export default function StoreErpSidebarShot() {
                             />
                           </div>
 
-                          <div className="space-y-1">
+                          <div className="space-y-1 max-h-48 overflow-y-auto scrollbar-none">
                             {filteredStores.map((store) => {
                               const isCurrent = store.id === activeStore.id;
                               return (
@@ -426,6 +459,31 @@ export default function StoreErpSidebarShot() {
                                 </button>
                               );
                             })}
+                          </div>
+
+                          {/* Trigger Add New Shop Flow */}
+                          <div className={`mt-2 pt-2 border-t ${isDark ? "border-neutral-800" : "border-neutral-200"}`}>
+                            <button
+                              onClick={() => {
+                                setStoreModalOpen(false);
+                                setAddShopModalOpen(true);
+                              }}
+                              className={`w-full flex items-center gap-2 p-2 rounded-xl text-xs font-mono transition-colors cursor-pointer ${
+                                isDark
+                                  ? "text-amber-400 hover:text-white hover:bg-neutral-800/60"
+                                  : "text-amber-600 hover:text-neutral-950 hover:bg-neutral-100"
+                              }`}
+                            >
+                              <div
+                                className={`w-5 h-5 rounded-md flex items-center justify-center ${
+                                  isDark ? "bg-amber-400/10 text-amber-400" : "bg-amber-50 text-amber-600"
+                                }`}
+                              >
+                                <Plus className="w-3.5 h-3.5" />
+                              </div>
+                              <span className="font-medium">Add new shop</span>
+                              <span className="ml-auto text-[10px] opacity-60">⌘N</span>
+                            </button>
                           </div>
                         </motion.div>
                       </>
@@ -627,7 +685,7 @@ export default function StoreErpSidebarShot() {
           </div>
 
           {/* Bottom Fixed Area: Theme Change & Settings */}
-          <div className="p-3 border-t shrink-0 transition-colors border-neutral-200/60 dark:border-neutral-800/60">
+          <div className={`p-3 border-t shrink-0 transition-colors ${isDark ? "border-neutral-800" : "border-neutral-200/80"}`}>
             {isCollapsed ? (
               <div className="flex flex-col items-center gap-1.5 text-neutral-400">
                 <button
@@ -689,7 +747,7 @@ export default function StoreErpSidebarShot() {
         >
           <div className="max-w-4xl mx-auto space-y-8 animate-pulse">
             {/* Top Breadcrumbs & Page Header Skeleton */}
-            <div className="space-y-3 pb-6 border-b transition-colors border-neutral-200/60 dark:border-neutral-800/60">
+            <div className={`space-y-3 pb-6 border-b transition-colors ${isDark ? "border-neutral-800" : "border-neutral-200/80"}`}>
               {/* Explicitly themed breadcrumb */}
               <div className="flex items-center gap-2">
                 <div className={`h-3 w-16 rounded-md ${isDark ? "bg-neutral-800" : "bg-neutral-200"}`} />
@@ -791,6 +849,14 @@ export default function StoreErpSidebarShot() {
           </div>
         </main>
       </div>
+
+      {/* Add Shop Multi-Step Flow Modal */}
+      <AddShopModal
+        isOpen={addShopModalOpen}
+        onClose={() => setAddShopModalOpen(false)}
+        onStoreCreated={handleStoreCreated}
+        isDark={isDark}
+      />
     </div>
   );
 }

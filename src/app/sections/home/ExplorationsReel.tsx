@@ -5,21 +5,22 @@ import { useRef, useState, useEffect } from "react";
 import { ScrambleText } from "@/components/common/ScrambleText";
 
 // Coded Video Assets
-import fluidIslandVideo from "@/assets/explorations/fluid-island.mp4";
-import cardExplorationVideo from "@/assets/explorations/card-exploration.mp4";
-import dockExplorationVideo from "@/assets/explorations/dock-exploration.mp4";
+import addShopExplorationVideo from "@/assets/explorations/add-shop-exploration.mp4";
 import sidebarExplorationVideo from "@/assets/explorations/sidebar-exploration.mp4";
+import dockExplorationVideo from "@/assets/explorations/dock-exploration.mp4";
+import cardExplorationVideo from "@/assets/explorations/card-exploration.mp4";
+import fluidIslandVideo from "@/assets/explorations/fluid-island.mp4";
 
 const REEL_ITEMS = [
   {
     id: "01",
-    title: "morphing fluid island",
-    video: fluidIslandVideo,
+    title: "store provisioning & setup flow",
+    video: addShopExplorationVideo,
   },
   {
     id: "02",
-    title: "3d holographic titanium card",
-    video: cardExplorationVideo,
+    title: "adaptive spatial erp sidebar",
+    video: sidebarExplorationVideo,
   },
   {
     id: "03",
@@ -28,8 +29,13 @@ const REEL_ITEMS = [
   },
   {
     id: "04",
-    title: "adaptive spatial erp sidebar",
-    video: sidebarExplorationVideo,
+    title: "3d holographic titanium card",
+    video: cardExplorationVideo,
+  },
+  {
+    id: "05",
+    title: "morphing fluid island",
+    video: fluidIslandVideo,
   },
 ];
 

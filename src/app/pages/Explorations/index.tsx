@@ -7,10 +7,11 @@ import { ScrambleText } from "@/components/common/ScrambleText";
 import { Button } from "@/components/common/Button";
 
 // Import Video & Exploration Assets
-import fluidIslandVideo from "@/assets/explorations/fluid-island.mp4";
-import cardExplorationVideo from "@/assets/explorations/card-exploration.mp4";
-import dockExplorationVideo from "@/assets/explorations/dock-exploration.mp4";
+import addShopExplorationVideo from "@/assets/explorations/add-shop-exploration.mp4";
 import sidebarExplorationVideo from "@/assets/explorations/sidebar-exploration.mp4";
+import dockExplorationVideo from "@/assets/explorations/dock-exploration.mp4";
+import cardExplorationVideo from "@/assets/explorations/card-exploration.mp4";
+import fluidIslandVideo from "@/assets/explorations/fluid-island.mp4";
 import exploration1 from "@/assets/explorations/Dashboard-finance.png";
 import exploration3 from "@/assets/explorations/Orders-page.png";
 import exploration4 from "@/assets/explorations/Transfer-finance.png";
@@ -31,25 +32,25 @@ export interface ExplorationItem {
 const EXPLORATIONS: ExplorationItem[] = [
   {
     id: "01",
-    title: "morphing fluid island",
-    category: "spatial ui & spring physics",
+    title: "store provisioning & setup flow",
+    category: "multi-step workflow & live telemetry",
     detail:
-      "a tactile pill component that fluidly morphs between a music player, live waveform, incoming call, timer, and biometric payment states with zero-jump layout transitions and svg gooey physics.",
-    src: fluidIslandVideo,
+      "an airy multi-step commerce store setup modal featuring dynamic domain validation, automated cloud provisioning steps with live check feedback, and a celebratory launch screen with tactile illustration stickers.",
+    src: addShopExplorationVideo,
     isVideo: true,
     isCoded: true,
-    tags: ["framer motion", "spring physics", "morphing ui", "audio web api"],
+    tags: ["multi-step modal", "state transitions", "live telemetry", "illustration stickers"],
   },
   {
     id: "02",
-    title: "3d holographic titanium card",
-    category: "3d shaders & specular physics",
+    title: "adaptive spatial erp sidebar",
+    category: "information architecture & tree svg",
     detail:
-      "hyper-realistic card interface with mouse-reactive specular sheen, dynamic gyroscopic tilt, iridescent holographic reflection, and interactive 3d flip with security cvc reveal.",
-    src: cardExplorationVideo,
+      "a multi-state commerce sidebar for multi-store retail operations featuring squiggly svg tree connectors, instant icon-only collapse, multi-store switcher, and 100% synchronized theme engine.",
+    src: sidebarExplorationVideo,
     isVideo: true,
     isCoded: true,
-    tags: ["3d transforms", "lighting shaders", "gyro tilt", "physics"],
+    tags: ["multi-store erp", "svg squiggly lines", "tree hierarchy", "theme engine"],
   },
   {
     id: "03",
@@ -64,17 +65,28 @@ const EXPLORATIONS: ExplorationItem[] = [
   },
   {
     id: "04",
-    title: "adaptive spatial erp sidebar",
-    category: "information architecture & tree svg",
+    title: "3d holographic titanium card",
+    category: "3d shaders & specular physics",
     detail:
-      "a multi-state commerce sidebar for multi-store retail operations featuring squiggly svg tree connectors, instant icon-only collapse, multi-store switcher, and 100% synchronized theme engine.",
-    src: sidebarExplorationVideo,
+      "hyper-realistic card interface with mouse-reactive specular sheen, dynamic gyroscopic tilt, iridescent holographic reflection, and interactive 3d flip with security cvc reveal.",
+    src: cardExplorationVideo,
     isVideo: true,
     isCoded: true,
-    tags: ["multi-store erp", "svg squiggly lines", "tree hierarchy", "theme engine"],
+    tags: ["3d transforms", "lighting shaders", "gyro tilt", "physics"],
   },
   {
     id: "05",
+    title: "morphing fluid island",
+    category: "spatial ui & spring physics",
+    detail:
+      "a tactile pill component that fluidly morphs between a music player, live waveform, incoming call, timer, and biometric payment states with zero-jump layout transitions and svg gooey physics.",
+    src: fluidIslandVideo,
+    isVideo: true,
+    isCoded: true,
+    tags: ["framer motion", "spring physics", "morphing ui", "audio web api"],
+  },
+  {
+    id: "06",
     src: exploration1,
     title: "finance dashboard",
     category: "systems & data",
@@ -83,7 +95,7 @@ const EXPLORATIONS: ExplorationItem[] = [
     tags: ["fintech", "data visualization", "systems"],
   },
   {
-    id: "06",
+    id: "07",
     src: exploration3,
     title: "orders management",
     category: "e-commerce operations",
@@ -92,7 +104,7 @@ const EXPLORATIONS: ExplorationItem[] = [
     tags: ["e-commerce", "b2b", "workflow"],
   },
   {
-    id: "07",
+    id: "08",
     src: exploration4,
     title: "transfer interface",
     category: "fintech interaction",
@@ -101,7 +113,7 @@ const EXPLORATIONS: ExplorationItem[] = [
     tags: ["fintech", "micro-interaction", "stepper"],
   },
   {
-    id: "08",
+    id: "09",
     src: exploration7,
     title: "mobile design tokens",
     category: "design system",
@@ -110,7 +122,7 @@ const EXPLORATIONS: ExplorationItem[] = [
     tags: ["mobile", "design tokens", "component library"],
   },
   {
-    id: "09",
+    id: "10",
     src: exploration9,
     title: "onboarding sequence",
     category: "product activation",
